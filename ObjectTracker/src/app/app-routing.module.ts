@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SensorTestComponent } from './components/sensor-test/sensor-test.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'sensor-test', component: SensorTestComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
