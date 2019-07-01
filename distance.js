@@ -40,5 +40,5 @@ function angle(px, py, p2x, p2y) {
     return value;
   };
 
-  console.log(angle(12,12,10,10));
+  //console.log(angle(12,12,10,10));
 
