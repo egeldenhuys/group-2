@@ -14,11 +14,11 @@ body{
 }
 
 #container_div{
-    width: 36%;
+    width: 42%;
     height: 50%;
     position: fixed;
     top: 25%;
-    left: 32%;
+    left: 29%;
     background-color: #00ace6;
     opacity: 0.5;
     border-radius: 12px;
@@ -39,7 +39,7 @@ body{
     height: 30%;
     position: fixed;
     top: 28%;
-    left: 36%;
+    left: 32%;
 }
 
 #form{
@@ -47,7 +47,7 @@ body{
     height: 30%;
     position: fixed;
     top: 30%;
-    left: 40%;
+    left: 36%;
 }
 
 .location_icon{
@@ -66,6 +66,7 @@ body{
     outline: 0;
     border-width: 0 0 1px;
     border-color: white;
+    width: 500px;
 }
 
 .form_input:hover::-webkit-input-placeholder{
