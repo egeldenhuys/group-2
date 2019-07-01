@@ -4,12 +4,22 @@
     </head>
     <body>
         <div id="main_div"></div>
-        <div id="container_div">
-            <mat-icon class="location_icon">room</mat-icon><br/>
-            <mat-icon class="location_icon">room</mat-icon><br/>
-            <mat-icon class="location_icon">room</mat-icon><br/>
-            <mat-icon class="location_icon">room</mat-icon><br/>
-            <mat-icon class="location_icon">room</mat-icon><br/>
+        <h1 id="heading">Locations</h1>
+        <div id="container_div"></div>
+        <div id="icons">
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
         </div>
+        <div id="form">
+            <input #sensor1 class="form_input" placeholder="Location for sensor 1" type="text"><br/><br/><br/><br/>
+            <input #sensor2 class="form_input" placeholder="Location for sensor 2" type="text"><br/><br/><br/><br/>
+            <input #sensor3 class="form_input" placeholder="Location for sensor 3" type="text"><br/><br/><br/><br/>
+            <input #sensor4 class="form_input" placeholder="Location for sensor 4" type="text"><br/><br/><br/><br/>
+            <input #sensor5 class="form_input" placeholder="Location for sensor 5" type="text"><br/><br/><br/><br/>
+        </div>
+        <button (click) = "getFormInfo()" id="submit_button">Go</button>
     </body>
 </html>

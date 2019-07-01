@@ -14,15 +14,83 @@ body{
 }
 
 #container_div{
+    width: 36%;
+    height: 50%;
+    position: fixed;
+    top: 25%;
+    left: 32%;
+    background-color: #00ace6;
+    opacity: 0.5;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+#heading{
+    font-size: 70px;
+    position: fixed;
+    top: 5%;
+    left: 42%;
+    color: #ff4500;
+    font-family: Arial;
+}
+
+#icons{
     width: 40%;
     height: 30%;
     position: fixed;
-    top: 20%;
-    left: 30%;
-    background-color: aquamarine;
+    top: 28%;
+    left: 36%;
+}
+
+#form{
+    width: 40%;
+    height: 30%;
+    position: fixed;
+    top: 30%;
+    left: 40%;
 }
 
 .location_icon{
     color: #ff4500;
-    font-size: 60px;
+    font-size: 70px;
+}
+
+.form_input{
+    font-size: 30px;
+    height: 30px;
+    margin-left: 40px;
+    background: none;
+    padding: 4px;
+    border-bottom: 1px;
+    font-weight: bold;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: white;
+}
+
+.form_input:hover::-webkit-input-placeholder{
+    font-size: 32px;
+}
+
+.form_input:focus::-webkit-input-placeholder{
+    opacity: 0.4;
+}
+
+::placeholder{
+    color: white;
+    opacity: 1;
+}
+
+#submit_button{
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    background-color: #ff4500;
+    border: none;
+    border-radius: 12px;
+    position: fixed;
+    top: 84%;
+    left: 41%;
+    padding: 20px;
+    width: 20%;
 }
