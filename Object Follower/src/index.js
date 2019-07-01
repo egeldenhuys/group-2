@@ -62,7 +62,7 @@ class App extends React.Component {
       // Draw the bounding box.
       ctx.strokeStyle = "#00FFFF";
       ctx.lineWidth = 1;
-      ctx.strokeRect(x, y, width, height);
+      ctx.strokeRect(x+(width/2)-1, y+(height/2)-1, 2, 2);
       // Draw the label background.
       ctx.fillStyle = "#00FFFF";
       //const textWidth = ctx.measureText(prediction.class).width;
