@@ -70,11 +70,12 @@ export class MainComponent implements OnInit {
 
     //Sending the information to the data service to be posted
     this.service.sendLocationInfo(details1, details2, details3, details4, details5, this.start).subscribe((response: any) => {
-      if(response.success == "true"){
+      if(response.Success == "true"){
         //Recieve array of Cities in order
+        const cities = response.Cities;
       }
       else{
-
+        //No route available
       }
     });
   }

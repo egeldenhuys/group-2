@@ -6,11 +6,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
+import { LiveFeedComponent } from './live-feed/live-feed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    LiveFeedComponent
   ],
   imports: [
     BrowserModule,

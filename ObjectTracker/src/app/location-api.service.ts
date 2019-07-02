@@ -11,7 +11,7 @@ export interface City{
 
 export interface Cities{
     Cities: City[],
-    Start: City
+    StartCity: City
 }
 
 export interface LocationAPI{
@@ -28,7 +28,7 @@ export class LocationAPIService{
     constructor(private http: HttpClient) { }
 
     sendLocationInfo(city1: City, city2: City, city3: City, city4: City, city5: City, start: City){
-        const details: Cities = {Cities: [city1, city2, city3, city4, city5], Start: start};
+        const details: Cities = {Cities: [city1, city2, city3, city4, city5], StartCity: start};
         const postData = details;
 
         const options = {
