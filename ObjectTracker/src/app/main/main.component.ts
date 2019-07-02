@@ -54,6 +54,13 @@ export class MainComponent implements OnInit {
 
   getFormInfo(){
 
+    //Navigating to the live stream
+    try {
+      this.router.navigate(['live-feed']);
+    } catch(err) {
+      console.log("Could not redirect to live feed: " + err.message);
+    }
+
     //Getting the input values
     const sensor1_value = this.sensor1.nativeElement.value;
     const sensor2_value = this.sensor2.nativeElement.value;

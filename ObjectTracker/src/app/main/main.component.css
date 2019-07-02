@@ -1,6 +1,6 @@
 body{
     background-image: url("../../assets/images/map.jpg");
-    height: 930px;
+    height: 1060px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@ body{
 
 #container_div{
     width: 80%;
-    height: 50%;
+    height: 48%;
     position: fixed;
     top: 25%;
     left: 10%;
