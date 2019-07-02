@@ -20,6 +20,13 @@
             <input #sensor4 class="form_input" placeholder="Location for sensor 4, Country" type="text"><br/><br/><br/><br/>
             <input #sensor5 class="form_input" placeholder="Location for sensor 5, Country" type="text"><br/><br/><br/><br/>
         </div>
+        <div id="start">
+            <label class="container"><input type="radio" #start1 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start2 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start3 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start4 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start5 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+        </div>
         <button (click) = "getFormInfo()" id="submit_button">Go</button>
     </body>
 </html>
