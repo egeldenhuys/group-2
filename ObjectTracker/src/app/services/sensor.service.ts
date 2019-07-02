@@ -18,6 +18,10 @@ export class SensorService {
   
   setSensors(sensors: Sensor[]) {
     this.sensors = sensors;
+
+    this.sensors.forEach((element) => {
+      element.socket = null;
+    })
   }
 
   connectSensors() {

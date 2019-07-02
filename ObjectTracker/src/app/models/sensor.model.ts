@@ -12,5 +12,5 @@ export interface Sensor {
     postfix?: string;
     Poller?: any; // observable
     LastTrigger?: number;
-    socket: any;
+    socket?: any;
 }
