@@ -1,3 +1,6 @@
+import { SensorResponse } from './sensor-response.model';
+import { Observable } from 'rxjs';
+
 /**
  * Sensor config
  */
