@@ -36,8 +36,16 @@ export class SensorTestComponent implements OnInit {
       City: 'PTA',
       socket: null,
     };
+    let sensor2: Sensor = {
+      IP: '192.168.46.106',
+      Port: 8080,
+      ID: 2,
+      City: 'JHB',
+      socket: null,
+    };
 
-    this.sensorService.setSensors([sensor]);
+
+    this.sensorService.setSensors([sensor, sensor2]);
 
     this.sensorService.connectSensors();
 
