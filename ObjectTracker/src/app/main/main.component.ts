@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { City, LocationAPI, LocationAPIService } from '../services/location-api.service';
 import { Sensor } from '../models/sensor.model';
 import { SensorService } from '../services/sensor.service';
+import { CentralService } from '../services/central.service';
 
 @Component({
   selector: 'app-main',
@@ -29,7 +30,7 @@ export class MainComponent implements OnInit {
   start: City;
   sensors: Sensor[];
 
-  constructor(private service1: LocationAPIService, private service2: SensorService) {}
+  constructor(private service1: LocationAPIService, private service2: SensorService, private service3: CentralService) {}
 
   getFormInfo(){
     //Getting the input values
@@ -100,8 +101,13 @@ export class MainComponent implements OnInit {
           this.sensors.push(sensor);
 
           this.service2.setSensors(this.sensors);
-        }
 
+          //Sending the sensors to the Central service
+          this.service3.setSensors(this.sensors);
+
+          //Sending the cities to the Central service
+          this.service3.setCities(cities);
+        }
       }
       else{
         //No route available
