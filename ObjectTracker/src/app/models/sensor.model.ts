@@ -9,4 +9,7 @@ export interface Sensor {
     IP: string;
     Port: number;
     City: string;
+    Poller?: any; // observable
+    LastTrigger?: number;
+    socket: any;
 }
