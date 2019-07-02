@@ -10,13 +10,15 @@ import { SensorTestComponent } from './components/sensor-test/sensor-test.compon
 
 import { MainComponent } from './main/main.component';
 import { LiveFeedComponent } from './live-feed/live-feed.component';
+import { SocketTestComponent } from './components/socket-test/socket-test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     LiveFeedComponent,
-    SensorTestComponent
+    SensorTestComponent,
+    SocketTestComponent
   ],
   imports: [
     BrowserModule,
