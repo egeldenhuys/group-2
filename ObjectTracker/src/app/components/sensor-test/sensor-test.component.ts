@@ -14,17 +14,46 @@ export class SensorTestComponent implements OnInit {
 
   constructor(private sensorService: SensorService) { }
 
-  ngOnInit() {
-    this.sensorService.setSensors([{ID: 1, IP: '192.168.47.37', Port: 5000, City: 'PTA'}]);
+  foo(sensor2) {
+    // console.log(sensor2);
+    // this.sensorService.pollSensors(500).subscribe(
+    //   (sen: Sensor) => {
+    //     console.log(sen);
+    //     this.sensorService.pollSensors(500).subscribe(
+    //       (sensor) => {
+    //         this.foo(sensor);
+    //       }
+    //     );
+    //   }
+    // );
+  }
 
-    this.sensorService.querySensor(this.sensorService.sensors[0])
-    .subscribe((res) => {
-      this.msg = res.Distance.toString();
-    },
-    (err: HttpErrorResponse) => {
-      this.msg = err.message;
-      console.log(err);
-    });
+  ngOnInit() {
+    let sensor: Sensor = {
+      IP: '192.168.47.37',
+      Port: 5000,
+      ID: 1,
+      City: 'PTA',
+      socket: null,
+    };
+    let sensor2: Sensor = {
+      IP: '192.168.46.106',
+      Port: 8080,
+      ID: 2,
+      City: 'JHB',
+      socket: null,
+    };
+
+
+    this.sensorService.setSensors([sensor, sensor2]);
+
+    this.sensorService.connectSensors();
+
+    this.sensorService.pollSensors(1000).subscribe(
+      (sen: Sensor) => {
+        console.log(sen);
+      }
+    );
 
   }
 
