@@ -29,7 +29,26 @@ export class CentralService{
         visited.push(data);
     }
 
-    sendVisisted(){}
+    //Send array of visited cities to team 4
+    sendVisisted(){
+        const postData = visited;
 
+        const options = {
+            method: 'POST',
+            // url: authenticateFABIAdminURL,
+            headers: {
+                'cache-control': 'no-cache',
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin":"*",
+                'Accept': 'application/json'
+            },
+            body: postData,
+            json: true
+        };
+
+        return this.http.request('POST', 'url', options);
+    }
+
+    //Send directions of next city to team 1
     sendNextCity(){}
 }

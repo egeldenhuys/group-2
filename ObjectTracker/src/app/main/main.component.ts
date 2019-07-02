@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { City, LocationAPI, LocationAPIService } from '../services/location-api.service';
 import { Sensor } from '../models/sensor.model';
 import { SensorService } from '../services/sensor.service';
@@ -47,9 +49,11 @@ export class MainComponent implements OnInit {
   //Array of sensor objects
   sensors: Sensor[];
 
-  constructor(private service1: LocationAPIService, private service2: SensorService, private service3: CentralService, private renderer: Renderer2) {}
+  constructor(private service1: LocationAPIService, private service2: SensorService, private service3: CentralService, 
+    private renderer: Renderer2, private router: Router) {}
 
   getFormInfo(){
+
     //Getting the input values
     const sensor1_value = this.sensor1.nativeElement.value;
     const sensor2_value = this.sensor2.nativeElement.value;
@@ -289,6 +293,13 @@ export class MainComponent implements OnInit {
 
             //Setting the start city as visited
             this.service3.setVisisted(this.start);
+
+            //Navigating to the live stream
+            try {
+              this.router.navigate(['live-feed']);
+            } catch(err) {
+              console.log("Could not redirect to live feed: " + err.message);
+            }
           }
         }
         else{
