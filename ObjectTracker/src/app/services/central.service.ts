@@ -9,6 +9,13 @@ var visited: City[] = [];       //Array of cities that have been visited startin
 var cities: City[] = [];        //Array of cities in the order in which they need to be visitsed
 var sensors: Sensor[] = [];     //Array of sensors in the order in which they need to be visited
 
+//Defines an object to be able to send the visited array as a json
+export interface Visited{
+    Visited: City[]
+}
+
+const sendVisitedUrl = 'https://bbdvacmap.herokuapp.com/cityReached';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -32,22 +39,22 @@ export class CentralService{
 
     //Send array of visited cities to team 4
     sendVisisted(){
-        const postData = visited;
+        const postData: Visited = {Visited: visited};
 
         const options = {
-            method: 'POST',
-            // url: authenticateFABIAdminURL,
+            url: sendVisitedUrl,
             headers: {
                 'cache-control': 'no-cache',
                 'Content-Type': 'application/json',
                 "Access-Control-Allow-Origin":"*",
                 'Accept': 'application/json'
             },
+            method: 'POST',
             body: postData,
             json: true
         };
 
-        return this.http.request('POST', 'url', options);
+        return this.http.request('POST', sendVisitedUrl, options);
     }
 
     //Send directions of next city to team 1
