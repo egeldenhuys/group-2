@@ -7,7 +7,7 @@ import { Sensor } from '../models/sensor.model';
 
 var visited: City[] = [];       //Array of cities that have been visited starting with the start city
 var cities: City[] = [];        //Array of cities in the order in which they need to be visitsed
-var sensors: Sensor[] = [];     //Array os sensors in the order in which they need to be visited
+var sensors: Sensor[] = [];     //Array of sensors in the order in which they need to be visited
 
 @Injectable({
     providedIn: 'root'
@@ -25,6 +25,7 @@ export class CentralService{
         cities = data;
     }
 
+    //Adding cities that have been visited to the array
     setVisisted(data: City){
         visited.push(data);
     }

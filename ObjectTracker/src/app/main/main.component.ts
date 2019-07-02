@@ -289,24 +289,25 @@ export class MainComponent implements OnInit {
 
             var sensor: Sensor = {ID: id, IP: '', Port: 0, City: cities[i].Name};
             this.sensors.push(sensor);
+          }
 
-            this.service2.setSensors(this.sensors);
+          //Sending the list of sensors to the Sensor Service
+          this.service2.setSensors(this.sensors);
 
-            //Sending the sensors to the Central service
-            this.service3.setSensors(this.sensors);
+          //Sending the sensors to the Central service
+          this.service3.setSensors(this.sensors);
 
-            //Sending the cities to the Central service
-            this.service3.setCities(cities);
+          //Sending the cities to the Central service
+          this.service3.setCities(cities);
 
-            //Setting the start city as visited
-            this.service3.setVisisted(this.start);
+          //Setting the start city as visited
+          this.service3.setVisisted(this.start);
 
-            //Navigating to the live stream
-            try {
-              this.router.navigate(['live-feed']);
-            } catch(err) {
-              console.log("Could not redirect to live feed: " + err.message);
-            }
+          //Navigating to the live stream
+          try {
+            this.router.navigate(['live-feed']);
+          } catch(err) {
+            console.log("Could not redirect to live feed: " + err.message);
           }
         }
         else{
