@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { City, LocationAPI, LocationAPIService } from '../location-api.service';
+import { City, LocationAPI, LocationAPIService } from '../services/location-api.service';
+import { Sensor } from '../models/sensor.model';
+import { SensorService } from '../services/sensor.service';
 
 @Component({
   selector: 'app-main',
@@ -25,8 +27,9 @@ export class MainComponent implements OnInit {
 
   //Chosen start city
   start: City;
+  sensors: Sensor[];
 
-  constructor(private service: LocationAPIService) {}
+  constructor(private service1: LocationAPIService, private service2: SensorService) {}
 
   getFormInfo(){
     //Getting the input values
@@ -69,10 +72,36 @@ export class MainComponent implements OnInit {
     }
 
     //Sending the information to the data service to be posted
-    this.service.sendLocationInfo(details1, details2, details3, details4, details5, this.start).subscribe((response: any) => {
+    this.service1.sendLocationInfo(details1, details2, details3, details4, details5, this.start).subscribe((response: any) => {
       if(response.Success == "true"){
         //Recieve array of Cities in order
         const cities = response.Cities;
+
+        //Creating array of sensors (in correct order)
+        for(var i = 0; i < cities.length; i++){
+          var id = 0;
+          if(cities[i] == details1){
+            id = 1;
+          }
+          else if(cities[1] == details2){
+            id = 2;
+          }
+          else if(cities[i] == details3){
+            id = 3;
+          }
+          else if(cities[i] == details4){
+            id = 4;
+          }
+          else{
+            id = 5;
+          }
+
+          var sensor: Sensor = {ID: id, IP: '', Port: 0, City: cities[i].Name};
+          this.sensors.push(sensor);
+
+          this.service2.setSensors(this.sensors);
+        }
+
       }
       else{
         //No route available

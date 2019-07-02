@@ -7,6 +7,7 @@ import { SensorResponse } from '../models/sensor-response.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SensorService {
   sensors: Sensor[] = [];
 
