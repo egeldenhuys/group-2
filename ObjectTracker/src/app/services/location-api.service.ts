@@ -14,11 +14,6 @@ export interface Cities{
     StartCity: City
 }
 
-export interface LocationAPI{
-    Cities: City[],
-    Visited: City[]
-}
-
 @Injectable({
     providedIn: 'root'
 })

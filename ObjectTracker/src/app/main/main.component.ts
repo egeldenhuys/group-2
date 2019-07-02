@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { City, LocationAPI, LocationAPIService } from '../services/location-api.service';
+import { City, LocationAPIService } from '../services/location-api.service';
 import { Sensor } from '../models/sensor.model';
 import { SensorService } from '../services/sensor.service';
 import { CentralService } from '../services/central.service';

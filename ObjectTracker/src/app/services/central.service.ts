@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { SensorService } from '../services/sensor.service';
-import { LocationAPIService, Cities, City, LocationAPI } from '../services/location-api.service';
+import { LocationAPIService, Cities, City } from '../services/location-api.service';
 import { Sensor } from '../models/sensor.model';
 
 var visited: City[] = [];       //Array of cities that have been visited starting with the start city
