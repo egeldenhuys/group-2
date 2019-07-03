@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket</title>
+    </head>
+    <body onkeypress="keyPress(event)">
+        <script>
+            var canSend = false;
+            function onmessage(event) {
+                setLogText(event.data);
+            }
+
+            function setLogText(text) {
+                document.getElementById("log").append(text + "\n");
+            }
+
+            function onopen() {
+                canSend = true;
+                setLogText("Socket Opened");
+            }
+
+            function onclose() {
+                canSend = false;
+                setLogText("Socket Closed");
+            }
+
+            function getSocket() {
+                var temp = new WebSocket("ws://192.168.47.226:8777/");
+                return temp;
+            }            
+            
+            var ws = getSocket();
+                ws.onmessage = onmessage;
+                ws.onopen = onopen;
+                ws.onclose = onclose;
+
+            function handleMessage(msg) {
+                if (canSend) {
+                    ws.send(msg.toUpperCase());
+                }                                
+            }
+
+            function clearlog() {
+                document.getElementById("log").value = "";
+            }
+
+            function keyPress(event) {
+                let code = event.keyCode;
+                let key = String.fromCharCode(code).toLowerCase();
+            
+                let speed = document.getElementById("speedValue").value;
+                let angle = document.getElementById("angleValue").value;
+
+                switch(key) {
+                    case 'c':
+                        handleMessage('Connect');
+                    break;
+                    case 'w':
+                        handleMessage('Go_Forward');
+                    break;
+                    case 'd':
+                        handleMessage("Go_Right");
+                    break;
+                    case 's':
+                        handleMessage('Go_Backward');
+                    break;
+                    case 'a':
+                        handleMessage('Go_Left');
+                    break;
+                    case 'x':
+                        handleMessage('Stop');
+                    break;
+                    case 'y':
+                    {                        
+                        handleMessage('roll,' + speed + ',' + angle) ;
+                    }
+                    break;
+                    case 'g':
+                    {
+                        handleMessage('rot,' + angle) ;
+                    }
+                    break;
+                    case 'h':
+                    {
+                        handleMessage('cal') ;
+                    }
+                    break;
+                    case 'q':
+                        handleMessage('Disconnect');
+                    break;
+                }
+            }
+           
+        </script>
+        <h4>Commands</h4>
+        <ul>
+            <li>C: Connect Sphero</li>
+            <li>Q: Disconnect Sphero</li>
+        </ul>
+        <h4>Speed and Angle</h4>
+        <div>
+            <br />
+            <label>Speed: <span id="speed"></span></label>
+            <input id="speedValue" type="input" min="-255" max="255" value="0" />
+            <label>Angle: <span id="angle"></span></label>
+            <input id="angleValue" type="input" min="0" max="360" value="0" />
+        </div>  
+        <h4>Controls</h4>
+        <ul>
+            <li>W: Forward</li>
+            <li>D: Right</li>
+            <li>S: Backward</li>
+            <li>A: Left</li>
+            <li>X: Stop</li>
+            <li>Y: Forward at an Angle and Speed</li>
+            <li>G: ROT at angle</li>
+            <li>H: Set heading at angle</li>
+        </ul>
+
+        <textarea id="log" rows="10" cols="80"></textarea>
+    </body>
+</html>
