@@ -1,0 +1,10 @@
+<p>opencv-test works!</p>
+
+<webcam #webcam [height]="500" [width]="500" [trigger]="triggerObservable"
+(imageCapture)="handleImage($event)" *ngIf="showWebcam"
+[allowCameraSwitch]="false" [switchCamera]="nextWebcamObservable"
+[videoOptions]="videoOptions"
+[imageQuality]="1"
+(cameraSwitched)="cameraWasSwitched($event)"
+(initError)="handleInitError($event)"
+></webcam>
