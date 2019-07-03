@@ -39,8 +39,8 @@
 }
 
 .cirlces{
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: none;
     background-color: #ff4500;
@@ -49,120 +49,120 @@
 }
 
 #circle1{
-    top: 20%;
+    top: 18%;
     left: 76%;
 }
 
 #icon1{
     position: fixed;
-    top: 16.3%;
-    left: 76.7%;
+    top: 14.3%;
+    left: 76.9%;
     z-index: 1;
     display: block;
 }
 
 #circle2{
-    top: 28%;
+    top: 26%;
     left: 76%;
 }
 
 #icon2{
     position: fixed;
-    top: 24.3%;
-    left: 76.75%;
+    top: 22.3%;
+    left: 76.9%;
 }
 
 #circle3{
-    top: 36%;
+    top: 34%;
     left: 76%;
 }
 
 #icon3{
     position: fixed;
-    top: 32.3%;
-    left: 76.75%;
+    top: 30.3%;
+    left: 76.9%;
 }
 
 #circle4{
-    top: 44%;
+    top: 42%;
     left: 76%;
 }
 
 #icon4{
     position: fixed;
-    top: 40.3%;
-    left: 76.75%;
+    top: 38.3%;
+    left: 76.9%;
 }
 
 #circle5{
-    top: 52%;
+    top: 50%;
     left: 76%;
 }
 
 #icon5{
     position: fixed;
-    top: 48.3%;
-    left: 76.75%;
+    top: 46.3%;
+    left: 76.9%;
 }
 
 #circle6{
-    top: 60%;
+    top: 58%;
     left: 76%;
 }
 
 #icon6{
     position: fixed;
-    top: 56.3%;
-    left: 76.75%;
+    top: 54.3%;
+    left: 76.9%;
 }
 
 #circle7{
-    top: 68%;
+    top: 66%;
     left: 76%;
 }
 
 #icon7{
     position: fixed;
-    top: 64.4%;
-    left: 76.75%;
+    top: 62.4%;
+    left: 76.9%;
 }
 
 #circle8{
-    top: 76%;
+    top: 74%;
     left: 76%;
 }
 
 #icon8{
     position: fixed;
-    top: 72.3%;
-    left: 76.75%;
+    top: 70.3%;
+    left: 76.9%;
 }
 
 #circle9{
-    top: 84%;
+    top: 82%;
     left: 76%;
 }
 
 #icon9{
     position: fixed;
-    top: 80.3%;
-    left: 76.76%;
+    top: 78.3%;
+    left: 76.95%;
 }
 
 #circle10{
-    top: 92%;
+    top: 90%;
     left: 76%;
 }
 
 #icon10{
     position: fixed;
-    top: 88.3%;
-    left: 76.05%;
+    top: 86.3%;
+    left: 76.06%;
 }
 
 .location_number{
     color: white;
-    font-size: 45px;
+    font-size: 40px;
 }
 
 p{
@@ -174,62 +174,62 @@ p{
 
 #p1_div{
     position: fixed;
-    top: 18%;
-    left: 80%;
+    top: 15.5%;
+    left: 81%;
 }
 
 #p2_div{
     position: fixed;
-    top: 26%;
-    left: 80%;
+    top: 23.5%;
+    left: 81%;
 }
 
 #p3_div{
     position: fixed;
-    top: 34%;
-    left: 80%;
+    top: 31.5%;
+    left: 81%;
 }
 
 #p4_div{
     position: fixed;
-    top: 42%;
-    left: 80%;
+    top: 39.5%;
+    left: 81%;
 }
 
 #p5_div{
     position: fixed;
-    top: 50%;
-    left: 80%;
+    top: 47.5%;
+    left: 81%;
 }
 
 #p6_div{
     position: fixed;
-    top: 58%;
-    left: 80%;
+    top: 55.5%;
+    left: 81%;
 }
 
 #p7_div{
     position: fixed;
-    top: 66%;
-    left: 80%;
+    top: 63.5%;
+    left: 81%;
 }
 
 #p8_div{
     position: fixed;
-    top: 74%;
-    left: 80%;
+    top: 71.5%;
+    left: 81%;
 }
 
 #p9_div{
     position: fixed;
-    top: 82%;
-    left: 80%;
+    top: 79.5%;
+    left: 81%;
 }
 
 #p10_div{
     position: fixed;
-    top: 90%;
-    left: 80%;
+    top: 87.5%;
+    left: 81%;
 }
 
 #circles_div_1, #circles_div_2, #circles_div_3, #circles_div_4, #circles_div_5, #circles_div_6,

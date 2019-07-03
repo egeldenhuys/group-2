@@ -37,6 +37,14 @@ export class CentralService{
         visited.push(data);
     }
 
+    getCities(){
+        return cities;
+    }
+
+    getVisited(){
+        return visited;
+    }
+
     //Send array of visited cities to team 4
     sendVisisted(){
         const postData: Visited = {Visited: visited};
