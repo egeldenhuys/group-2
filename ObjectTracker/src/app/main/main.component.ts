@@ -51,7 +51,7 @@ export class MainComponent implements OnInit {
   start: City;
 
   //Array of sensor objects
-  sensors: Sensor[];
+  sensors: Sensor[] = [];
 
   constructor(private service1: LocationAPIService, private service2: SensorService, private service3: CentralService, 
     private renderer: Renderer2, private router: Router) {}
@@ -266,7 +266,7 @@ export class MainComponent implements OnInit {
       if(valid == true){
         //Sending the information to the data service to be posted
         this.service1.sendLocationInfo(details1, details2, details3, details4, details5, details6, details7, details8, details9, details10, this.start).subscribe((response: any) => {
-          if(response.Success == "true"){
+          if(response.Success == true){
             //Recieve array of Cities in order
             const cities = response.Cities;
 
@@ -304,8 +304,8 @@ export class MainComponent implements OnInit {
                 id = 10;
               }
 
-              var sensor: Sensor = {ID: id, IP: '', Port: 0, City: cities[i].Name};
-              this.sensors.push(sensor);
+              var temp2: Sensor = {ID: id, IP: '', Port: 0, City: cities[i].Name};
+              this.sensors.push(temp2);
             }
 
             //Sending the list of sensors to the Sensor Service

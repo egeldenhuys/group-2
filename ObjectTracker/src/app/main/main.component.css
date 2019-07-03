@@ -190,6 +190,10 @@ body{
     box-shadow: 5px 5px #a6a6a6;
 }
 
+#submit_button:hover{
+    font-size: 35px;
+}
+
 #error_cover{
     width: 100%;
     height: 100%;

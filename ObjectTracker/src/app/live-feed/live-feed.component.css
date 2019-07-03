@@ -54,10 +54,11 @@
 }
 
 #icon1{
-    top: 20.5%;
-    left: 76.2%;
-    display: block;
     position: fixed;
+    top: 16.3%;
+    left: 76.7%;
+    z-index: 1;
+    display: block;
 }
 
 #circle2{
@@ -66,8 +67,9 @@
 }
 
 #icon2{
-    top: 28.5%;
-    left: 76.2%;
+    position: fixed;
+    top: 24.3%;
+    left: 76.75%;
 }
 
 #circle3{
@@ -76,8 +78,9 @@
 }
 
 #icon3{
-    top: 36.5%;
-    left: 76.2%;
+    position: fixed;
+    top: 32.3%;
+    left: 76.75%;
 }
 
 #circle4{
@@ -86,8 +89,9 @@
 }
 
 #icon4{
-    top: 44.5%;
-    left: 76.2%;
+    position: fixed;
+    top: 40.3%;
+    left: 76.75%;
 }
 
 #circle5{
@@ -96,8 +100,9 @@
 }
 
 #icon5{
-    top: 52.5%;
-    left: 76.2%;
+    position: fixed;
+    top: 48.3%;
+    left: 76.75%;
 }
 
 #circle6{
@@ -106,8 +111,9 @@
 }
 
 #icon6{
-    top: 60.5%;
-    left: 76.2%;
+    position: fixed;
+    top: 56.3%;
+    left: 76.75%;
 }
 
 #circle7{
@@ -116,8 +122,9 @@
 }
 
 #icon7{
-    top: 68.5%;
-    left: 76.2%;
+    position: fixed;
+    top: 64.4%;
+    left: 76.75%;
 }
 
 #circle8{
@@ -126,8 +133,9 @@
 }
 
 #icon8{
-    top: 76.5%;
-    left: 76.2%;
+    position: fixed;
+    top: 72.3%;
+    left: 76.75%;
 }
 
 #circle9{
@@ -136,8 +144,9 @@
 }
 
 #icon9{
-    top: 84.5%;
-    left: 76.2%;
+    position: fixed;
+    top: 80.3%;
+    left: 76.76%;
 }
 
 #circle10{
@@ -146,11 +155,12 @@
 }
 
 #icon10{
-    top: 92.5%;
-    left: 76.2%;
+    position: fixed;
+    top: 88.3%;
+    left: 76.05%;
 }
 
-.location_icon{
+.location_number{
     color: white;
     font-size: 45px;
 }
@@ -159,54 +169,65 @@ p{
     color: black;
     font-family: Arial;
     font-size: 30px;
+    position: fixed;
 }
 
 #p1_div{
+    position: fixed;
     top: 18%;
     left: 80%;
 }
 
 #p2_div{
+    position: fixed;
     top: 26%;
     left: 80%;
 }
 
 #p3_div{
+    position: fixed;
     top: 34%;
     left: 80%;
 }
 
 #p4_div{
+    position: fixed;
     top: 42%;
     left: 80%;
 }
 
 #p5_div{
+    position: fixed;
     top: 50%;
     left: 80%;
 }
 
 #p6_div{
+    position: fixed;
     top: 58%;
     left: 80%;
 }
 
 #p7_div{
+    position: fixed;
     top: 66%;
     left: 80%;
 }
 
 #p8_div{
+    position: fixed;
     top: 74%;
     left: 80%;
 }
 
 #p9_div{
+    position: fixed;
     top: 82%;
     left: 80%;
 }
 
 #p10_div{
+    position: fixed;
     top: 90%;
     left: 80%;
 }
@@ -218,5 +239,4 @@ p{
 
 #p1_div, #p2_div, #p3_div, #p4_div, #p5_div, #p6_div, #p7_div, #p8_div, #p9_div, #p10_div{
     display: none;
-    position: fixed;
 }
