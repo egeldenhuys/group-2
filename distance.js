@@ -18,10 +18,10 @@ function distance (x1, y1, x2, y2)
   return (dist.toFixed(2));
 };
 // here you use the objects x and y method (boject.x anf object.y)
-function angle(bollx, bolly, conex, coney)
+function angle(ballx, bally, conex, coney)
  {
-    var dircy = bolly - coney;
-    var dircx = bollx - conex;
+    var dircy = bally - coney;
+    var dircx = ballx - conex;
   
     var value = Math.atan2(dircy, dircx); 
     value *= 180 / Math.PI;
@@ -36,15 +36,21 @@ function angle(bollx, bolly, conex, coney)
       value -= 360;
     };
 
-    if(bollx > conex && bolly > coney )//|| - bollx > -conex ) //&& -boll)
+    if(ballx > conex || bally > coney )
+    {
+      value += 180;
+    }
+    if(ballx > conex && bally > coney)
     {
       value += 180;
     }
 
-    else if(- bollx > - coney)
+    if(- ballx > - coney)
     {
       value -= 180;
     }
+
+    
 
     var dirct;
 
@@ -92,20 +98,18 @@ function angle(bollx, bolly, conex, coney)
   };
 
   // loop that constantly shows the distance and angel
+  
   do
   {
-    var bollx = 2;
-    var bolly = 1;
-    var cityx = 4;
-    var cityY = 3;
+    var ballx = 2000;
+    var bally = 2200;
+    var cityx = 3909;
+    var cityY = 4433;
 
-    
-    console.log("move: "+angle(bollx,bolly,cityx,cityY));
-    console.log("distance:"+distance(bollx,bolly,cityx,cityY));
-    
-    
-
-  }while(distance(bollx,bolly,cityx,cityY) > 1);
+    console.log("move: "+angle(ballx,bally,cityx,cityY));
+    console.log("distance:"+distance(ballx,bally,cityx,cityY)+"km");
+ 
+  }while(distance(ballx,bally,cityx,cityY) > 1);
   console.log("you have reached the end please upload the the next cordinates ");
 
  
