@@ -1,9 +1,9 @@
-#body{
+body{
     background-image: url("../../assets/images/map.jpg");
     height: 1060px;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;   
 }
 
 #main_div{

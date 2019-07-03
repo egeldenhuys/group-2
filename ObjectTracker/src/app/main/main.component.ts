@@ -333,7 +333,7 @@ export class MainComponent implements OnInit {
             const errors = this.error.nativeElement;
             const error_message = this.errorMessage.nativeElement;
 
-            error_message.innerHTML = "There is no route available. Please try again.";
+            error_message.innerHTML = "There is no current route available with the given locations. Please try again.";
 
             this.renderer.setStyle(cover, 'display', 'none');
             this.renderer.setStyle(errors, 'display', 'none');
