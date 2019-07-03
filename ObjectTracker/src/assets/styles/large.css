@@ -1,0 +1,255 @@
+#body{
+    /* background-image: url("../../assets/images/map.jpg");
+    height: 1060px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    background-color: red;
+}
+
+#main_div{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0.5;
+}
+
+#container_div{
+    width: 80%;
+    height: 48%;
+    position: fixed;
+    top: 25%;
+    left: 10%;
+    background-color: #00ace6;
+    opacity: 0.5;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 10px 10px #a6a6a6;
+}
+
+#heading{
+    font-size: 70px;
+    position: fixed;
+    top: 5%;
+    left: 42%;
+    color: #ff4500;
+    font-family: Arial;
+}
+
+#icons{
+    width: 40%;
+    height: 30%;
+    position: fixed;
+    top: 28%;
+    left: 12%;
+}
+
+#icons2{
+    width: 40%;
+    height: 30%;
+    position: fixed;
+    top: 28%;
+    left: 53%;
+}
+
+#form{
+    width: 40%;
+    height: 30%;
+    position: fixed;
+    top: 30%;
+    left: 15%;
+}
+
+#form2{
+    width: 40%;
+    height: 30%;
+    position: fixed;
+    top: 30%;
+    left: 56%;
+}
+
+#start{
+    width: 40%;
+    height: 30%;
+    position: fixed;
+    top: 30%;
+    left: 43%;
+}
+
+#start2{
+    width: 40%;
+    height: 30%;
+    position: fixed;
+    top: 30%;
+    left: 84%;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 5px;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: #ff4500;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+}
+
+.location_icon{
+    color: #ff4500;
+    font-size: 70px;
+}
+
+.form_input{
+    font-size: 30px;
+    height: 30px;
+    margin-left: 40px;
+    background: none;
+    padding: 4px;
+    border-bottom: 1px;
+    font-weight: bold;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: white;
+    width: 500px;
+    color: white;
+}
+
+.form_input:hover::-webkit-input-placeholder{
+    font-size: 32px;
+}
+
+.form_input:focus::-webkit-input-placeholder{
+    opacity: 0.4;
+}
+
+::placeholder{
+    color: white;
+    opacity: 1;
+}
+
+#submit_button{
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    background-color: #ff4500;
+    border: none;
+    border-radius: 12px;
+    position: fixed;
+    top: 84%;
+    left: 41%;
+    padding: 20px;
+    width: 20%;
+    box-shadow: 5px 5px #a6a6a6;
+}
+
+#error_cover{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.8;
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#error_message{
+    width:50%;
+    height: 40%;
+    position: fixed;
+    top: 20%;
+    left: 26%;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    display: none;
+}
+
+#error_message h1{
+    font-size: 60px;
+    color: #ff4500;
+    font-family: Arial;
+}
+
+#error_message p{
+    font-size: 30px;
+    font-family: Arial;
+}
+
+/* .ball{
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    
+    animation: spin 1000ms linear infinite, moveLeftToRight 5s linear infinite;
+    background: radial-gradient(circle at 80px 80px, #00ace6, white);
+    
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    
+    position: absolute;
+    left: 0;
+    top: 10%;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes moveLeftToRight {
+    0%   { left: -100px; }
+    100% { left: 95%; }
+} */

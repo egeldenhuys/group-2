@@ -344,7 +344,9 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    if(window.innerWidth <= 1300 && window.innerWidth >= 1366){
+      require("style-loader!./../../../assets/styles/large.css");
+    }
   }
 
 }
