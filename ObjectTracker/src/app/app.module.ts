@@ -11,6 +11,7 @@ import { SensorTestComponent } from './components/sensor-test/sensor-test.compon
 import { MainComponent } from './main/main.component';
 import { LiveFeedComponent } from './live-feed/live-feed.component';
 import { SocketTestComponent } from './components/socket-test/socket-test.component';
+import { BallTestComponent } from './components/ball-test/ball-test.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SocketTestComponent } from './components/socket-test/socket-test.compon
     MainComponent,
     LiveFeedComponent,
     SensorTestComponent,
-    SocketTestComponent
+    SocketTestComponent,
+    BallTestComponent
   ],
   imports: [
     BrowserModule,
