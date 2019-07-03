@@ -6,7 +6,7 @@ import { Sensor } from '../models/sensor.model';
 import { SensorService } from '../services/sensor.service';
 import { CentralService } from '../services/central.service';
 
-//variable used to import different style sheets
+//variable used to import different stylesheets
 declare var require: any;
 
 @Component({

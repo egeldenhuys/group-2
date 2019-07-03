@@ -3,13 +3,18 @@ import { Router } from '@angular/router';
 import { City, LocationAPIService } from '../services/location-api.service';
 import { CentralService } from '../services/central.service';
 
+//Global variables describing the size of the video
 const VIDEO_WIDTH = 1400;
 const VIDEO_HEIGHT = 1065;
+
+//variable used to import different style sheets
+declare var require: any;
 
 @Component({
   selector: 'app-live-feed',
   templateUrl: './live-feed.component.html',
-  styleUrls: ['./live-feed.component.css']
+  // styleUrls: ['./live-feed.component.css']
+  styleUrls: ['../../assets/styles/large-live-feed.css']
 })
 export class LiveFeedComponent implements OnInit {
 
@@ -174,6 +179,11 @@ export class LiveFeedComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Changing the stylesheet according to the screen size
+    if(window.innerWidth <= 1300 && window.innerWidth >= 1366){
+      require("style-loader!./../../assets/styles/large.css");
+    }
+
     this.webcam_init();
     this.loadLocations();
   }
