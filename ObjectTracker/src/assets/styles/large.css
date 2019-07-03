@@ -1,10 +1,9 @@
 #body{
-    /* background-image: url("../../assets/images/map.jpg");
+    background-image: url("../images/map.jpg");
     height: 1060px;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; */
-    background-color: red;
+    background-repeat: no-repeat;
 }
 
 #main_div{
@@ -15,11 +14,11 @@
 }
 
 #container_div{
-    width: 80%;
-    height: 48%;
+    width: 85%;
+    height: 54%;
     position: fixed;
     top: 25%;
-    left: 10%;
+    left: 7%;
     background-color: #00ace6;
     opacity: 0.5;
     border-radius: 12px;
@@ -31,7 +30,7 @@
     font-size: 70px;
     position: fixed;
     top: 5%;
-    left: 42%;
+    left: 39%;
     color: #ff4500;
     font-family: Arial;
 }
@@ -41,7 +40,7 @@
     height: 30%;
     position: fixed;
     top: 28%;
-    left: 12%;
+    left: 9%;
 }
 
 #icons2{
@@ -56,32 +55,32 @@
     width: 40%;
     height: 30%;
     position: fixed;
-    top: 30%;
-    left: 15%;
+    top: 29%;
+    left: 11%;
 }
 
 #form2{
     width: 40%;
     height: 30%;
     position: fixed;
-    top: 30%;
-    left: 56%;
+    top: 29%;
+    left: 55%;
 }
 
 #start{
     width: 40%;
     height: 30%;
     position: fixed;
-    top: 30%;
-    left: 43%;
+    top: 29%;
+    left: 44%;
 }
 
 #start2{
     width: 40%;
     height: 30%;
     position: fixed;
-    top: 30%;
-    left: 84%;
+    top: 29%;
+    left: 88%;
 }
 
 .container {
@@ -95,7 +94,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    padding: 5px;
+    padding: 2px;
 }
 
 .container input {
@@ -110,8 +109,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 30px;
-    width: 30px;
+    height: 28px;
+    width: 28px;
     background-color: #eee;
     border-radius: 50%;
 }
@@ -145,15 +144,15 @@
 
 .location_icon{
     color: #ff4500;
-    font-size: 70px;
+    font-size: 63px;
 }
 
 .form_input{
-    font-size: 30px;
+    font-size: 25px;
     height: 30px;
     margin-left: 40px;
     background: none;
-    padding: 4px;
+    padding: 2px;
     border-bottom: 1px;
     font-weight: bold;
     outline: 0;
@@ -184,10 +183,10 @@
     border: none;
     border-radius: 12px;
     position: fixed;
-    top: 84%;
-    left: 41%;
-    padding: 20px;
-    width: 20%;
+    top: 86%;
+    left: 43%;
+    padding: 14px;
+    width: 14%;
     box-shadow: 5px 5px #a6a6a6;
 }
 

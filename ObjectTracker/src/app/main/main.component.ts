@@ -12,6 +12,7 @@ declare var require: any;
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
+  // styleUrls: ['../../assets/styles/large.css']
   styleUrls: ['./main.component.css']
 })
 
@@ -68,6 +69,8 @@ export class MainComponent implements OnInit {
     const sensor8_value = this.sensor8.nativeElement.value;
     const sensor9_value = this.sensor9.nativeElement.value;
     const sensor10_value = this.sensor10.nativeElement.value;
+
+    //check if one city is entered
 
     //Error checking
     if(sensor1_value == "" && sensor2_value == "" && sensor3_value == "" && sensor4_value == "" && sensor5_value == "" &&
