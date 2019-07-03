@@ -13,8 +13,7 @@ declare var require: any;
 @Component({
   selector: 'app-live-feed',
   templateUrl: './live-feed.component.html',
-  // styleUrls: ['./live-feed.component.css']
-  styleUrls: ['../../assets/styles/large-live-feed.css']
+  styleUrls: ['./live-feed.component.css']
 })
 export class LiveFeedComponent implements OnInit {
 
@@ -108,61 +107,61 @@ export class LiveFeedComponent implements OnInit {
 
     //Displaying the side directions based on the number of cities recieved
     if(length != 0){
-      var num = length - 1;
+      var num = 0;
       this.renderer.setStyle(circle_1, 'display', 'block');
       this.renderer.setStyle(p_1_div, 'display', 'block');
       p_1.innerHTML = cities[num].Name;
 
-      num -= 1;
-      if(num >= 0){
+      num += 1;
+      if(num != length){
         this.renderer.setStyle(circle_2, 'display', 'block');
         this.renderer.setStyle(p_2_div, 'display', 'block');
         p_2.innerHTML = cities[num].Name;
 
-        num -= 1;
-        if(num >= 0){
+        num += 1;
+        if(num != length){
           this.renderer.setStyle(circle_3, 'display', 'block');
           this.renderer.setStyle(p_3_div, 'display', 'block');
           p_3.innerHTML = cities[num].Name;
 
-          num -= 1;
-          if(num >= 0){
+          num += 1;
+          if(num != length){
             this.renderer.setStyle(circle_4, 'display', 'block');
             this.renderer.setStyle(p_4_div, 'display', 'block');
             p_4.innerHTML = cities[num].Name;
 
-            num -= 1;
-            if(num >= 0){
+            num += 1;
+            if(num != length){
               this.renderer.setStyle(circle_5, 'display', 'block');
               this.renderer.setStyle(p_5_div, 'display', 'block');
               p_5.innerHTML = cities[num].Name;
 
-              num -= 1;
-              if(num >= 0){
+              num += 1;
+              if(num != length){
                 this.renderer.setStyle(circle_6, 'display', 'block');
                 this.renderer.setStyle(p_6_div, 'display', 'block');
                 p_6.innerHTML = cities[num].Name;
 
-                num -= 1;
-                if(num >= 0){
+                num += 1;
+                if(num != length){
                   this.renderer.setStyle(circle_7, 'display', 'block');
                   this.renderer.setStyle(p_7_div, 'display', 'block');
                   p_7.innerHTML = cities[num].Name;
 
-                  num -= 1;
-                  if(num >= 0){
+                  num += 1;
+                  if(num != length){
                     this.renderer.setStyle(circle_8, 'display', 'block');
                     this.renderer.setStyle(p_8_div, 'display', 'block');
                     p_8.innerHTML = cities[num].Name;
 
-                    num -= 1;
-                    if(num >= 0){
+                    num += 1;
+                    if(num != length){
                       this.renderer.setStyle(circle_9, 'display', 'block');
                       this.renderer.setStyle(p_9_div, 'display', 'block');
                       p_9.innerHTML = cities[num].Name;
 
-                      num -= 1;
-                      if(num >= 0){
+                      num += 1;
+                      if(num != length){
                         this.renderer.setStyle(circle_10, 'display', 'block');
                         this.renderer.setStyle(p_10_div, 'display', 'block');
                         p_10.innerHTML = cities[num].Name;
