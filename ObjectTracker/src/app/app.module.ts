@@ -11,6 +11,8 @@ import { SensorTestComponent } from './components/sensor-test/sensor-test.compon
 import { MainComponent } from './main/main.component';
 import { LiveFeedComponent } from './live-feed/live-feed.component';
 import { SocketTestComponent } from './components/socket-test/socket-test.component';
+import { CanvasDetectorComponent } from './components/canvas-detector/canvas-detector.component';
+import { WebcamModule } from 'ngx-webcam';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,16 @@ import { SocketTestComponent } from './components/socket-test/socket-test.compon
     MainComponent,
     LiveFeedComponent,
     SensorTestComponent,
-    SocketTestComponent
+    SocketTestComponent,
+    CanvasDetectorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
     MatFormFieldModule,
-    HttpClientModule
+    HttpClientModule,
+    WebcamModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
