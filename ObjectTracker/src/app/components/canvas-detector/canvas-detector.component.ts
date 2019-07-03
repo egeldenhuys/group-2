@@ -9,12 +9,6 @@ import { Subject, Observable } from 'rxjs';
 })
 export class CanvasDetectorComponent implements OnInit {
 
-  @ViewChild('video')
-  public video: ElementRef;
-
-  @ViewChild("canvas")
-  public canvas: ElementRef;
-
   constructor() { }
 
   // toggle webcam on/off
