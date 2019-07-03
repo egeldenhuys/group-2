@@ -6,6 +6,9 @@ import { Sensor } from '../models/sensor.model';
 import { SensorService } from '../services/sensor.service';
 import { CentralService } from '../services/central.service';
 
+//variable used to import different style sheets
+declare var require: any;
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -78,9 +81,10 @@ export class MainComponent implements OnInit {
       this.renderer.setStyle(cover, 'display', 'block');
       this.renderer.setStyle(errors, 'display', 'block');
     }
-    // else if(sensor1_value == sensor2_value || sensor1_value == sensor3_value || sensor1_value == sensor4_value || sensor1_value == sensor5_value ||
+    // else if((sensor1_value == sensor2_value || sensor1_value == sensor3_value || sensor1_value == sensor4_value || sensor1_value == sensor5_value ||
     //   sensor1_value == sensor6_value || sensor1_value == sensor7_value || sensor1_value == sensor8_value || sensor1_value == sensor9_value ||
-    //   sensor1_value == sensor10_value){
+    //   sensor1_value == sensor10_value) && (sensor2_value !== "" || sensor3_value != "" || sensor4_value != "" || sensor5_value != "" ||
+    //   sensor6_value != "" || sensor7_value != "" || sensor8_value != "" || sensor9_value != "" || sensor10_value != "")){
     //   const cover = this.errorCover.nativeElement;
     //   const errors = this.error.nativeElement;
     //   const error_message = this.errorMessage.nativeElement;
@@ -91,8 +95,9 @@ export class MainComponent implements OnInit {
     //   this.renderer.setStyle(errors, 'display', 'block');
 
     // }
-    // else if(sensor2_value == sensor3_value || sensor2_value == sensor4_value || sensor2_value == sensor5_value || sensor2_value == sensor6_value ||
-    //   sensor2_value == sensor7_value || sensor2_value == sensor8_value || sensor2_value == sensor9_value || sensor2_value == sensor10_value){
+    // else if((sensor2_value == sensor3_value || sensor2_value == sensor4_value || sensor2_value == sensor5_value || sensor2_value == sensor6_value ||
+    //   sensor2_value == sensor7_value || sensor2_value == sensor8_value || sensor2_value == sensor9_value || sensor2_value == sensor10_value) &&
+    //   (sensor2_value != "")){
     //   const cover = this.errorCover.nativeElement;
     //   const errors = this.error.nativeElement;
     //   const error_message = this.errorMessage.nativeElement;
@@ -102,8 +107,8 @@ export class MainComponent implements OnInit {
     //   this.renderer.setStyle(cover, 'display', 'block');
     //   this.renderer.setStyle(errors, 'display', 'block');
     // }
-    // else if(sensor3_value == sensor4_value || sensor3_value == sensor5_value || sensor3_value == sensor6_value || sensor3_value == sensor7_value ||
-    //   sensor3_value == sensor8_value || sensor3_value == sensor9_value || sensor3_value == sensor10_value){
+    // else if((sensor3_value == sensor4_value || sensor3_value == sensor5_value || sensor3_value == sensor6_value || sensor3_value == sensor7_value ||
+    //   sensor3_value == sensor8_value || sensor3_value == sensor9_value || sensor3_value == sensor10_value) && (sensor3_value != "")){
     //   const cover = this.errorCover.nativeElement;
     //   const errors = this.error.nativeElement;
     //   const error_message = this.errorMessage.nativeElement;
@@ -113,8 +118,8 @@ export class MainComponent implements OnInit {
     //   this.renderer.setStyle(cover, 'display', 'block');
     //   this.renderer.setStyle(errors, 'display', 'block');
     // }
-    // else if(sensor4_value == sensor5_value || sensor4_value ==  sensor6_value ||sensor4_value == sensor7_value || sensor4_value == sensor8_value ||
-    //   sensor4_value == sensor9_value || sensor4_value == sensor10_value){
+    // else if((sensor4_value == sensor5_value || sensor4_value ==  sensor6_value ||sensor4_value == sensor7_value || sensor4_value == sensor8_value ||
+    //   sensor4_value == sensor9_value || sensor4_value == sensor10_value) && (sensor4_value != "")){
     //   const cover = this.errorCover.nativeElement;
     //   const errors = this.error.nativeElement;
     //   const error_message = this.errorMessage.nativeElement;
@@ -344,8 +349,9 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Changing the stylesheet according to the screen size
     if(window.innerWidth <= 1300 && window.innerWidth >= 1366){
-      require("style-loader!./../../../assets/styles/large.css");
+      require("style-loader!./../../assets/styles/large.css");
     }
   }
 
