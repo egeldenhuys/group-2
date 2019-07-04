@@ -15,7 +15,6 @@ export interface Visited{
 }
 
 const sendVisitedUrl = 'https://bbdvacmap.herokuapp.com/cityReached';
-const sendNextCityUrl = '';
 
 @Injectable({
     providedIn: 'root'
@@ -72,7 +71,7 @@ export class CentralService{
         if(cities.length != 0){
             return cities[0];
         }else{
-            return 'Destination reached. No more cities to visit';
+            return false;
         }        
     }
 }

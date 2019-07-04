@@ -30,10 +30,19 @@ export class SensorService {
 
         element.socket.on('connect', () => {
           console.log("Created socket for sensor ID: " + element.ID);
-        });
-       
+        });  
       }
     });
+  }
+
+  //Set the coordinates of the sensors once identified
+  setCoordinates(x: number, y: number, id: number){
+    for(var i = 0; i < this.sensors.length; i++){
+      if(this.sensors[i].ID == id){
+        this.sensors[i].X_coordinate = x;
+        this.sensors[i].Y_coordinate = y;
+      }
+    }
   }
 
   /**

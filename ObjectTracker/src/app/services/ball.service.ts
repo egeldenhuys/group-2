@@ -23,9 +23,7 @@ export class BallService {
     console.log('Ball: ' + event.data);
   }
 
-  constructor() {
-
-  }
+  constructor() {}
 
   init() {
     this.ws = new WebSocket(this.url);

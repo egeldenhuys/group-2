@@ -13,4 +13,6 @@ export interface Sensor {
     Poller?: any; // observable
     LastTrigger?: number;
     socket?: any;
+    X_coordinate: number;
+    Y_coordinate: number;
 }
