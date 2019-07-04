@@ -34,6 +34,8 @@ export class SensorTestComponent implements OnInit {
       Port: 5000,
       ID: 1,
       City: 'PTA',
+      X_coordinate: 0,
+      Y_coordinate: 0,
       socket: null,
     };
     let sensor2: Sensor = {
@@ -41,6 +43,8 @@ export class SensorTestComponent implements OnInit {
       Port: 8080,
       ID: 2,
       City: 'JHB',
+      X_coordinate: 0,
+      Y_coordinate: 0,
       socket: null,
     };
 

@@ -142,9 +142,9 @@ body{
     background: white;
 }
 
-.location_icon{
+mat-icon{
     color: #ff4500;
-    font-size: 63px;
+    font-size: 63px !important;
 }
 
 .form_input{

@@ -8,12 +8,13 @@ import { CentralService } from '../services/central.service';
 
 //variable used to import different stylesheets
 declare var require: any;
+var style = '';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   // styleUrls: ['../../assets/styles/large.css']
-  styleUrls: ['./main.component.css']
+  // styleUrls: ['./main.component.css']
 })
 
 export class MainComponent implements OnInit {
@@ -219,8 +220,11 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     //Changing the stylesheet according to the screen size
-    if(window.innerWidth <= 1300 && window.innerWidth >= 1366){
-      require("style-loader!./../../assets/styles/large.css");
+    if(window.innerWidth >= 1300 && window.innerWidth <= 1366){
+      require("style-loader!./../../assets/styles/large.css");        //larger laptop screen
+    }
+    else{
+      require("style-loader!./main.component.css");
     }
   }
 

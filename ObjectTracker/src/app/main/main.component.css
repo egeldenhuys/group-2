@@ -142,9 +142,9 @@ body{
     background: white;
 }
 
-.location_icon{
+mat-icon{
     color: #ff4500;
-    font-size: 70px;
+    font-size: 70px !important;
 }
 
 .form_input{
@@ -230,31 +230,3 @@ body{
     padding-left: 20px;
     padding-right: 20px;
 }
-
-/* .ball{
-    display: block;
-    width: 80px;
-    height: 80px;
-    background: white;
-    border-radius: 50%;
-    
-    animation: spin 1000ms linear infinite, moveLeftToRight 5s linear infinite;
-    background: radial-gradient(circle at 80px 80px, #00ace6, white);
-    
-    -webkit-transition: all 1s ease;
-    transition: all 1s ease;
-    
-    position: absolute;
-    left: 0;
-    top: 10%;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes moveLeftToRight {
-    0%   { left: -100px; }
-    100% { left: 95%; }
-} */
