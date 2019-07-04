@@ -6,7 +6,8 @@ import { BehaviorSubject } from 'rxjs';
 
 export interface City{
     Name: string,
-    Country: string
+    Country: string,
+    ID: number;
 }
 
 export interface Cities{

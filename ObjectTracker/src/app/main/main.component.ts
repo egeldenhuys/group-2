@@ -85,34 +85,34 @@ export class MainComponent implements OnInit {
     else{
       //Creating the City Objects
       var temp = sensor1_value.split(',');
-      const details1: City = { Name: temp[0], Country: temp[1]};
+      const details1: City = { Name: temp[0], Country: temp[1], ID: 1};
 
       temp = sensor2_value.split(',');
-      const details2: City = { Name: temp[0], Country: temp[1]};
+      const details2: City = { Name: temp[0], Country: temp[1], ID: 2};
 
       temp = sensor3_value.split(',');
-      const details3: City = { Name: temp[0], Country: temp[1]};
+      const details3: City = { Name: temp[0], Country: temp[1], ID: 3};
 
       temp = sensor4_value.split(',');
-      const details4: City = { Name: temp[0], Country: temp[1]};
+      const details4: City = { Name: temp[0], Country: temp[1], ID: 4};
 
       temp = sensor5_value.split(',');
-      const details5: City = { Name: temp[0], Country: temp[1]};
+      const details5: City = { Name: temp[0], Country: temp[1], ID: 5};
 
       temp = sensor6_value.split(',');
-      const details6: City = { Name: temp[0], Country: temp[1]};
+      const details6: City = { Name: temp[0], Country: temp[1], ID: 6};
 
       temp = sensor7_value.split(',');
-      const details7: City = { Name: temp[0], Country: temp[1]};
+      const details7: City = { Name: temp[0], Country: temp[1], ID: 7};
 
       temp = sensor8_value.split(',');
-      const details8: City = { Name: temp[0], Country: temp[1]};
+      const details8: City = { Name: temp[0], Country: temp[1], ID: 8};
 
       temp = sensor9_value.split(',');
-      const details9: City = { Name: temp[0], Country: temp[1]};
+      const details9: City = { Name: temp[0], Country: temp[1], ID: 9};
 
       temp = sensor10_value.split(',');
-      const details10: City = { Name: temp[0], Country: temp[1]};
+      const details10: City = { Name: temp[0], Country: temp[1], ID: 10};
 
       var valid = true;
 
@@ -170,42 +170,8 @@ export class MainComponent implements OnInit {
 
             //Creating array of sensors (in correct order)
             for(var i = 0; i < cities.length; i++){
-              var id = 0;
-              var port = '';
-              var ip = '';
-              if(cities[i] == details1){
-                id = 1;
-              }
-              else if(cities[1] == details2){
-                id = 2;
-              }
-              else if(cities[i] == details3){
-                id = 3;
-              }
-              else if(cities[i] == details4){
-                id = 4;
-              }
-              else if(cities[i] == details5){
-                id = 5;
-              }
-              else if(cities[i] == details6){
-                id = 6;
-              }
-              else if(cities[i] == details7){
-                id = 7;
-              }
-              else if(cities[i] == details8){
-                id = 8;
-              }
-              else if(cities[i] == details9){
-                id = 9;
-              }
-              else{
-                id = 10;
-              }
-
-              var temp2: Sensor = {ID: id, IP: '', Port: 0, City: cities[i].Name};
-              this.sensors.push(temp2);
+              var temp_sensor: Sensor = {ID: cities[i].ID, IP: '', Port: 0, City: cities[i].Name};
+              this.sensors.push(temp_sensor);
             }
 
             //Sending the list of sensors to the Sensor Service
