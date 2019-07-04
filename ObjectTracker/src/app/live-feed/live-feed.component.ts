@@ -19,6 +19,7 @@ export class LiveFeedComponent implements OnInit {
 
   title = 'pixel-tracker';
   private video: HTMLVideoElement;
+  private canvas: HTMLCanvasElement;
 
   //Getting all the orange cirlces
   @ViewChild("circle1", {static: true}) circle1: ElementRef;
@@ -192,6 +193,15 @@ export class LiveFeedComponent implements OnInit {
     this.video.width = VIDEO_WIDTH;
     this.video.height = VIDEO_HEIGHT;
 
+    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    this.canvas.width = VIDEO_WIDTH;
+    this.canvas.height = VIDEO_HEIGHT;
+
+    // TODO(egeldenhuys): Integrate object detection
+    // let ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+    // ctx.strokeStyle = "#FF0000";
+    // ctx.fillRect(0, 0, 20, 20);
+    
     navigator.mediaDevices
       .getUserMedia({
         audio: false,
