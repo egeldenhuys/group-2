@@ -14,7 +14,6 @@ export class SensorService {
   sensorSleep = 1000;
 
   constructor(private http: HttpClient) {}
-
   
   setSensors(sensors: Sensor[]) {
     this.sensors = sensors;

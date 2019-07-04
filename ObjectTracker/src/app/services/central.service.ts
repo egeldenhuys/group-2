@@ -15,6 +15,7 @@ export interface Visited{
 }
 
 const sendVisitedUrl = 'https://bbdvacmap.herokuapp.com/cityReached';
+const sendNextCityUrl = '';
 
 @Injectable({
     providedIn: 'root'
@@ -34,7 +35,8 @@ export class CentralService{
 
     //Adding cities that have been visited to the array
     setVisisted(data: City){
-        visited.push(data);
+        visited.push(data);     //add the visited city to the array
+        cities.shift();         //removes the first element from the array since that citiy has been visited
     }
 
     getCities(){
@@ -46,7 +48,7 @@ export class CentralService{
     }
 
     //Send array of visited cities to team 4
-    sendVisisted(){
+    sendVisited(){
         const postData: Visited = {Visited: visited};
 
         const options = {
@@ -65,6 +67,12 @@ export class CentralService{
         return this.http.request('POST', sendVisitedUrl, options);
     }
 
-    //Send directions of next city to team 1
-    sendNextCity(){}
+    //Returns next city to visit
+    getNextCity(){
+        if(cities.length != 0){
+            return cities[0];
+        }else{
+            return 'Destination reached. No more cities to visit';
+        }        
+    }
 }
