@@ -335,8 +335,8 @@ export class MainComponent implements OnInit {
 
             error_message.innerHTML = "There is no current route available with the given locations. Please try again.";
 
-            this.renderer.setStyle(cover, 'display', 'none');
-            this.renderer.setStyle(errors, 'display', 'none');
+            this.renderer.setStyle(cover, 'display', 'block');
+            this.renderer.setStyle(errors, 'display', 'block');
           }
         });
       }
