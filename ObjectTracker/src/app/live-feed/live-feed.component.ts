@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { City, LocationAPIService } from '../services/location-api.service';
 import { CentralService } from '../services/central.service';
 
+declare var PixelDetector: any;
+
 //Global variables describing the size of the video
 const VIDEO_WIDTH = 1400;
 const VIDEO_HEIGHT = 1065;
@@ -186,6 +188,8 @@ export class LiveFeedComponent implements OnInit {
 
     this.webcam_init();
     this.loadLocations();
+
+    // PixelDetector.foo();
   }
 
   webcam_init() {
