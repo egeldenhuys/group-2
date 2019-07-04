@@ -97,20 +97,20 @@ export class LiveFeedComponent implements OnInit {
     const p_9_div = this.p9_div.nativeElement;
     const p_10_div = this.p10_div.nativeElement;
 
-    var temp: City[] = [];
-    var city1: City = {Name: "Johannesburg", Country: "South Africa", ID: 1};
-    var city2: City = {Name: "Cape Town", Country: "South Africa", ID: 2};
-    var city3: City = {Name: "Durban", Country: "South Africa", ID: 3};
-    temp.push(city1);
-    temp.push(city2);
-    temp.push(city3);
+    // var temp: City[] = [];
+    // var city1: City = {Name: "Johannesburg", Country: "South Africa", ID: 1};
+    // var city2: City = {Name: "Cape Town", Country: "South Africa", ID: 2};
+    // var city3: City = {Name: "Durban", Country: "South Africa", ID: 3};
+    // temp.push(city1);
+    // temp.push(city2);
+    // temp.push(city3);
 
-    // const cities = this.service.getCities();
-    // for(var i = 0; i < cities.length; i++){
-    //   cities[i].ID = i + 1;
-    // }
+    const cities = this.service.getCities();
+    for(var i = 0; i < cities.length; i++){
+      cities[i].ID = i + 1;
+    }
 
-    const cities = temp;
+    // const cities = temp;
     var length = cities.length;
 
     //Displaying the side directions based on the number of cities recieved

@@ -37,7 +37,11 @@ export class CentralService{
     //Adding cities that have been visited to the array
     setVisisted(data: City){
         visited.push(data);     //add the visited city to the array
-        // cities.shift();         //removes the first element from the array since that citiy has been visited
+    }
+
+    addVisited(data: City){
+        visited.push(data);
+        cities.shift();
     }
 
     getCities(){
