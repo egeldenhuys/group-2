@@ -13,6 +13,7 @@ class Distance {
     var dist = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
     return dist.toFixed(2);
   }
+  
   // here you use the objects x and y method (object.x anf object.y)
   static angle(ballx, bally, conex, coney) {
     var dircy = bally - coney;

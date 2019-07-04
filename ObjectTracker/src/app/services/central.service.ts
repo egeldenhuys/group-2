@@ -7,6 +7,7 @@ import { Sensor } from '../models/sensor.model';
 
 var visited: City[] = [];       //Array of cities that have been visited starting with the start city
 var cities: City[] = [];        //Array of cities in the order in which they need to be visitsed
+var all_cities: City[] = [];
 var sensors: Sensor[] = [];     //Array of sensors in the order in which they need to be visited
 
 //Defines an object to be able to send the visited array as a json
@@ -28,18 +29,19 @@ export class CentralService{
         sensors = data;
     }
 
-    setCities(data: City[]){
+    setCities(data: City[], data2: City[]){
         cities = data;
+        all_cities = data2;
     }
 
     //Adding cities that have been visited to the array
     setVisisted(data: City){
         visited.push(data);     //add the visited city to the array
-        cities.shift();         //removes the first element from the array since that citiy has been visited
+        // cities.shift();         //removes the first element from the array since that citiy has been visited
     }
 
     getCities(){
-        return cities;
+        return all_cities;
     }
 
     getVisited(){

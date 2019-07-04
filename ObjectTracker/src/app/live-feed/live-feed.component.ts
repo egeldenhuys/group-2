@@ -15,7 +15,7 @@ declare var require: any;
 @Component({
   selector: 'app-live-feed',
   templateUrl: './live-feed.component.html',
-  styleUrls: ['./live-feed.component.css']
+  // styleUrls: ['./live-feed.component.css']
 })
 export class LiveFeedComponent implements OnInit {
 
@@ -108,6 +108,7 @@ export class LiveFeedComponent implements OnInit {
     const cities = this.service.getCities();
     // const cities = temp;
     var length = cities.length;
+    console.log(cities);
 
     //Displaying the side directions based on the number of cities recieved
     if(length != 0){
@@ -185,6 +186,9 @@ export class LiveFeedComponent implements OnInit {
     //Changing the stylesheet according to the screen size
     if(window.innerWidth <= 1300 && window.innerWidth >= 1366){
       require("style-loader!./../../assets/styles/large.css");
+    }
+    else{
+      require("style-loader!./live-feed.component.css");
     }
 
     this.webcam_init();

@@ -182,7 +182,7 @@ export class MainComponent implements OnInit {
             this.central_service.setSensors(this.sensors);
 
             //Sending the cities to the Central service
-            this.central_service.setCities(cities);
+            this.central_service.setCities(cities, cities);
 
             //Setting the start city as visited
             this.central_service.setVisisted(this.start);
