@@ -34,7 +34,6 @@ export class BallService {
     this.ws.onclose = this.onclose;
   }
 
-
   sendMessage(msg: string) {
     if (this.canSend) {
       this.ws.send(msg.toUpperCase());
