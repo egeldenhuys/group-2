@@ -169,18 +169,6 @@ export class MainComponent implements OnInit {
             //Recieve array of Cities in order
             const cities = response.Cities;
 
-            //Creating array of sensors (in correct order)
-            for(var i = 0; i < cities.length; i++){
-              var temp_sensor: Sensor = {ID: cities[i].ID, IP: '', Port: 0, City: cities[i].Name, X_coordinate: 0, Y_coordinate: 0};
-              this.sensors.push(temp_sensor);
-            }
-
-            //Sending the list of sensors to the Sensor Service
-            this.sensor_service.setSensors(this.sensors);
-
-            //Sending the sensors to the Central service
-            this.central_service.setSensors(this.sensors);
-
             //Sending the cities to the Central service
             this.central_service.setCities(cities, cities);
 
@@ -190,7 +178,8 @@ export class MainComponent implements OnInit {
             //Navigating to the live stream
             try {
               this.router.navigate(['live-feed']);
-            } catch(err) {
+            } 
+            catch(err) {
               console.log("Could not redirect to live feed: " + err.message);
             }
           }
