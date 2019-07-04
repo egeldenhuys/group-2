@@ -42,11 +42,11 @@ export class CentralService{
 
     addVisited(data: City){
         visited.push(data);
-        cities.shift();
+        cities.shift();         //removes the visited city from the array
     }
 
-    setLocations(locations){
-      locations = locations;
+    setLocations(locations: []){
+        locations = locations;
     }
 
     getCities(){

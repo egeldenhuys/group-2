@@ -199,14 +199,14 @@ export class LiveFeedComponent implements OnInit {
     this.webcam_init();
     this.loadLocations();
     this.pixelDetector = new PixelDetector();
-    this.pixelDetector.setConeCount(length);
+    // this.pixelDetector.setConeCount(length);
     this.pixelDetector.start();
 
-    this.service.setLocations(this.pixelDetector.identified_cones);
+    // this.service.setLocations(this.pixelDetector.identified_cones);
 
-    var next_location = this.service.getNextLocation();
-    var ball_position = this.pixelDetector.this.last_ball_pos;
-    var distance = Distance.distance(ball_position.x, ball_position.y, next_location.x, next_location.y);
+    // var next_location = this.service.getNextLocation();
+    // var ball_position = this.pixelDetector.this.last_ball_pos;
+    // var distance = Distance.distance(ball_position.x, ball_position.y, next_location.x, next_location.y);
 
     // PixelDetector.foo();
   }
