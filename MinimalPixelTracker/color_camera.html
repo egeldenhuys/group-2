@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>tracking.js - color with camera</title>
+    
+    <script src="libs/tracking-min.js"></script>
+	<script src="logic.js"></script>
+ 
+    <style>
+        video,
+        canvas {
+            /* margin-left: 100px;
+    margin-top: 35px; */
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="demo-frame">
+        <div class="demo-container">
+            <video id="video" width="500" height="500" preload autoplay loop muted controls></video>
+            <canvas id="canvas" width="500" height="500"></canvas>
+        </div>
+    </div>
+
+    <div id="logs">
+        <button id="changeStateBtn" onclick="changeState()">Change Track State (<span
+                id="current-tracking-btn">track_cones</span>)</button>
+        <button>Show identified cones</button>
+        <p>Ball Position: (<span id="ball-pos"></span>)</p>
+    </div>
+
+
+</body>
+
+
+</html>
