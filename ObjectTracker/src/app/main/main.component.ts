@@ -170,7 +170,7 @@ export class MainComponent implements OnInit {
 
             //Creating array of sensors (in correct order)
             for(var i = 0; i < cities.length; i++){
-              var temp_sensor: Sensor = {ID: cities[i].ID, IP: '', Port: 0, City: cities[i].Name};
+              var temp_sensor: Sensor = {ID: cities[i].ID, City: cities[i].Name};
               this.sensors.push(temp_sensor);
             }
 
