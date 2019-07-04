@@ -199,8 +199,7 @@ export class LiveFeedComponent implements OnInit {
     this.webcam_init();
     this.loadLocations();
     this.pixelDetector = new PixelDetector();
-    // this.pixelDetector.setConeCount(length);
-    // this.pixelDetector.start();
+    this.pixelDetector.setConeCount(length);
 
     // this.service.setLocations(this.pixelDetector.identified_cones);
 
@@ -209,7 +208,18 @@ export class LiveFeedComponent implements OnInit {
     // var distance = Distance.distance(ball_position.x, ball_position.y, next_location.x, next_location.y);
 
     // PixelDetector.foo();
-    this.pixelDetector.start();
+    this.pixelDetector.start();    
+    this.main_logic();
+  }
+
+  main_logic(){
+    // while (true){
+    //   if (this.pixelDetector.STATE == "track_ball"){
+    //     //LOGIC
+
+
+    //   }
+    // }
   }
 
   webcam_init() {

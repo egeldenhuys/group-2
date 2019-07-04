@@ -18,6 +18,8 @@ class PixelDetector {
         //Dont use cur_pos as ball position...
         this.cur_pos = { x: 0, y: 0 };
         this._initBall = true;
+
+        this.useMouseBypass = false;
     }
 
     setConeCount(count) {
@@ -51,6 +53,18 @@ class PixelDetector {
         this.changeState('track_ball');
     }
 
+    startMouseBypass() {
+        this.canvas.addEventListener('mousemove', (e) => {
+            if (this.STATE == "track_ball") {
+                var pos = getCursorPosition(canvas, e);
+                this.last_ball_pos.x = pos.x;
+                this.last_ball_pos.y = pos.y;
+                console.log(this.last_ball_pos);
+            }
+        });
+    }
+
+
     foo() {
         console.log("hello world!");
     }
@@ -81,11 +95,16 @@ class PixelDetector {
                 //Not using this anymore x_x
                 //this.trackCones(event, this.canvas, this.context);
             } else if (this.STATE == "track_ball") {
-                this.trackBall(event, this.canvas, this.context);
+                if (!this.useMouseBypass) {
+                    this.trackBall(event, this.canvas, this.context);
+                }
             }
         });
 
         this.startCitySelection();
+        if (this.useMouseBypass) {
+            this.startMouseBypass();
+        }
     }
 
 
