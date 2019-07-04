@@ -6,6 +6,7 @@ import { MainComponent } from '../app/main/main.component';
 import { LiveFeedComponent } from '../app/live-feed/live-feed.component';
 import { SocketTestComponent } from './components/socket-test/socket-test.component';
 import { BallTestComponent } from './components/ball-test/ball-test.component';
+import { DistanceTestComponent } from './components/distance-test/distance-test.component';
 
 const routes: Routes = [
   { path: 'sensor-test', component: SensorTestComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'live-feed', component: LiveFeedComponent},
   { path: '', component: MainComponent},
   { path: 'socket-test', component: SocketTestComponent},
-  { path: 'ball-test', component: BallTestComponent}
+  { path: 'ball-test', component: BallTestComponent},
+  { path: 'distance-test', component: DistanceTestComponent}
 ];
 
 @NgModule({

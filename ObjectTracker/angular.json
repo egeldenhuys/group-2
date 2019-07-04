@@ -26,7 +26,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/distance.js",
+              "src/assets/js/tracking.js",
+              "src/assets/js/PixelDetector.js"
+            ]
           },
           "configurations": {
             "production": {

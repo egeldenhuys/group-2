@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { City, LocationAPIService } from '../services/location-api.service';
 import { CentralService } from '../services/central.service';
 
+declare var PixelDetector: any;
+
 //Global variables describing the size of the video
-const VIDEO_WIDTH = 1400;
-const VIDEO_HEIGHT = 1065;
+const VIDEO_WIDTH = 1000;
+const VIDEO_HEIGHT = 1000;
 
 //variable used to import different style sheets
 declare var require: any;
@@ -19,6 +21,8 @@ export class LiveFeedComponent implements OnInit {
 
   title = 'pixel-tracker';
   private video: HTMLVideoElement;
+  private canvas: HTMLCanvasElement;
+  private pixelDetector: any;
 
   //Getting all the orange cirlces
   @ViewChild("circle1", {static: true}) circle1: ElementRef;
@@ -185,6 +189,10 @@ export class LiveFeedComponent implements OnInit {
 
     this.webcam_init();
     this.loadLocations();
+    this.pixelDetector = new PixelDetector();
+    this.pixelDetector.start();
+
+    // PixelDetector.foo();
   }
 
   webcam_init() {
@@ -192,6 +200,15 @@ export class LiveFeedComponent implements OnInit {
     this.video.width = VIDEO_WIDTH;
     this.video.height = VIDEO_HEIGHT;
 
+    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    this.canvas.width = VIDEO_WIDTH;
+    this.canvas.height = VIDEO_HEIGHT;
+
+    // TODO(egeldenhuys): Integrate object detection
+    // let ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+    // ctx.strokeStyle = "#FF0000";
+    // ctx.fillRect(0, 0, 20, 20);
+    
     navigator.mediaDevices
       .getUserMedia({
         audio: false,
