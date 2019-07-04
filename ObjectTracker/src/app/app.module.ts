@@ -12,6 +12,7 @@ import { MainComponent } from './main/main.component';
 import { LiveFeedComponent } from './live-feed/live-feed.component';
 import { SocketTestComponent } from './components/socket-test/socket-test.component';
 import { BallTestComponent } from './components/ball-test/ball-test.component';
+import { DistanceTestComponent } from './components/distance-test/distance-test.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BallTestComponent } from './components/ball-test/ball-test.component';
     LiveFeedComponent,
     SensorTestComponent,
     SocketTestComponent,
-    BallTestComponent
+    BallTestComponent,
+    DistanceTestComponent
   ],
   imports: [
     BrowserModule,
