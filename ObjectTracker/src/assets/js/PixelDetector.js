@@ -40,8 +40,6 @@ class PixelDetector {
         }
     }
 
-
-
     //Start Tracking - Entry Point
     //1. Find Cones (pixel positions stored in ...)
     //2. Start tracking ball. Report position
@@ -170,7 +168,7 @@ class PixelDetector {
                 console.log("We need more cones");
             } else {
                 console.log("We identified too many cones");
-                changeState('track_cones');
+                this.changeState('track_cones');
             }
         });
     }
