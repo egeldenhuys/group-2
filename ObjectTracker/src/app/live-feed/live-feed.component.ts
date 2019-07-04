@@ -108,7 +108,7 @@ export class LiveFeedComponent implements OnInit {
     // temp.push(city3);
 
     const cities = this.service.getCities();
-    for(var i = 0; i < cities.length; i++){
+    for (var i = 0; i < cities.length; i++) {
       cities[i].ID = i + 1;
     }
 
@@ -189,7 +189,7 @@ export class LiveFeedComponent implements OnInit {
 
   ngOnInit() {
     //Changing the stylesheet according to the screen size
-    if(window.innerWidth >= 1300 && window.innerWidth <= 1366){
+    if (window.innerWidth >= 1300 && window.innerWidth <= 1366) {
       require("style-loader!./../../assets/styles/large-live-feed.css");
     }
     else {
@@ -200,7 +200,7 @@ export class LiveFeedComponent implements OnInit {
     this.loadLocations();
     this.pixelDetector = new PixelDetector();
     // this.pixelDetector.setConeCount(length);
-    this.pixelDetector.start();
+    // this.pixelDetector.start();
 
     // this.service.setLocations(this.pixelDetector.identified_cones);
 
@@ -209,6 +209,7 @@ export class LiveFeedComponent implements OnInit {
     // var distance = Distance.distance(ball_position.x, ball_position.y, next_location.x, next_location.y);
 
     // PixelDetector.foo();
+    this.pixelDetector.start();
   }
 
   webcam_init() {
