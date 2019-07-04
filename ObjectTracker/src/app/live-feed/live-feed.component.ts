@@ -3,8 +3,10 @@ import { Router } from '@angular/router';
 import { City, LocationAPIService } from '../services/location-api.service';
 import { CentralService } from '../services/central.service';
 import { Distance } from '../../assets/js/distance';
+import { BallService } from '../services/ball.service';
 
 declare var PixelDetector: any;
+declare var Distance: any;
 
 //Global variables describing the size of the video
 const VIDEO_WIDTH = 1080;
@@ -25,6 +27,12 @@ export class LiveFeedComponent implements OnInit {
   private canvas: HTMLCanvasElement;
   private pixelDetector: any;
   length = 0;
+
+  mouseX = -1;
+  mouseY = -1;
+
+  destinationX = -1;
+  destinationY = -1;
 
   //Getting all the orange cirlces
   @ViewChild("circle1", { static: true }) circle1: ElementRef;
@@ -63,7 +71,7 @@ export class LiveFeedComponent implements OnInit {
   @ViewChild("p10_div", { static: true }) p10_div: ElementRef;
 
   constructor(private router: Router, private service: CentralService,
-    private renderer: Renderer2) { }
+    private renderer: Renderer2, private ballService: BallService) { }
 
   loadLocations() {
     const circle_1 = this.circle1.nativeElement;
@@ -198,8 +206,9 @@ export class LiveFeedComponent implements OnInit {
 
     this.webcam_init();
     this.loadLocations();
-    this.pixelDetector = new PixelDetector();
-    this.pixelDetector.setConeCount(length);
+    console.error("PixelDetector has been disabled!");
+    //this.pixelDetector = new PixelDetector();
+    //this.pixelDetector.setConeCount(length);
 
     // this.service.setLocations(this.pixelDetector.identified_cones);
 
@@ -208,8 +217,10 @@ export class LiveFeedComponent implements OnInit {
     // var distance = Distance.distance(ball_position.x, ball_position.y, next_location.x, next_location.y);
 
     // PixelDetector.foo();
-    this.pixelDetector.start();    
-    this.main_logic();
+    //this.pixelDetector.start();    
+    //this.main_logic();
+
+    window["ball"] = this.ballService;
   }
 
   main_logic(){
@@ -240,7 +251,7 @@ export class LiveFeedComponent implements OnInit {
       .getUserMedia({
         audio: false,
         video: {
-          facingMode: "user",
+          facingMode: "environment",
         }
       })
       .then(stream => {
@@ -261,21 +272,54 @@ export class LiveFeedComponent implements OnInit {
   }
 
   onCanvasClick(ev: MouseEvent) {
-    console.log(ev);
+    console.log("Destination:");
+    console.log(`${ev.offsetX},${ev.offsetY}`);
+
+    this.destinationX = ev.offsetX;
+    this.destinationY = ev.offsetY;
+
+    let ctx = this.canvas.getContext("2d");
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(this.destinationX - 3, this.destinationY - 3, 6, 6);
   }
 
-  // mouseTrapInit() {
-  //   console.log("Click target on canvas");
-  //   this.canvas.onclick(ev: MouseEvent).
+  onCanvasMouseMove(ev: MouseEvent) {
+    this.mouseX = ev.offsetX;
+    this.mouseY = ev.offsetY;
 
-  // }
-
-  // mouseTrap() {
-
-  //   setTimeout(this.mouseTrapIterate())
-  // }
-
-  mouseTrapIterate(cityX, cityY) {
+    let ctx = this.canvas.getContext("2d");
+    ctx.fillStyle = "#00FF00";
+    ctx.fillRect(this.mouseX, this.mouseY, 1, 1);
 
   }
+
+  mouseTrapInit() {
+    console.log("Starting mouseTrap...")
+    console.log("Please hover mouse on ball. 5 Second before starting...");
+    setTimeout(() => {this.mouseTrap();}, 5000);
+
+    // TODO: Init ball...
+  }
+
+  mouseTrap() {
+    console.log("Iterate...");
+
+    console.log(`mouse = ${this.mouseX}, ${this.mouseY}`);
+
+    let dist = Distance.distance(this.mouseX, this.mouseY, this.destinationX, this.destinationY) as number;
+    console.log("Distance = " + dist);
+
+    let angle = Distance.angle(this.mouseX, this.mouseY, this.destinationX, this.destinationY) - 90;
+    console.log("Angle = " + dist);
+
+    if (dist > 200) {
+      this.ballService.roll(100, angle);
+    } else {
+      console.log("Ball has reached its destination");
+      return;
+    }
+
+    setTimeout(() => {this.mouseTrap();}, 5000);
+  }
+
 }

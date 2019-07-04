@@ -97,7 +97,9 @@ class Distance {
       dirct = " North, West";
     }
 
-    return value.toFixed(2);// + dirct;
+    console.log(dirct);
+    console.log('value = ' + value);
+    return Math.floor(value);// + dirct;
   }
 
   // loop that constantly shows the distance and angel
