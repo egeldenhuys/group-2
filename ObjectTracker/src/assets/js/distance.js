@@ -97,7 +97,7 @@ class Distance {
       dirct = " North, West";
     }
 
-    return value.toFixed(2) + dirct;
+    return value.toFixed(2);// + dirct;
   }
 
   // loop that constantly shows the distance and angel
