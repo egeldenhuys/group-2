@@ -1,15 +1,5 @@
 #video, #canvas{
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    /* Caused problems with overlaying the canvas with the video */
-    /* width: 100%;
-    height: 100%; 
-    overflow: hidden;
-
-    min-width: 100%; 
-    min-height: 100%;  */
+    position: absolute;
 }
 
 #home_button{

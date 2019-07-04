@@ -7,7 +7,9 @@ import { Sensor } from '../models/sensor.model';
 
 var visited: City[] = [];       //Array of cities that have been visited starting with the start city
 var cities: City[] = [];        //Array of cities in the order in which they need to be visitsed
+var all_cities: City[] = [];
 var sensors: Sensor[] = [];     //Array of sensors in the order in which they need to be visited
+var locations = [];
 
 //Defines an object to be able to send the visited array as a json
 export interface Visited{
@@ -15,7 +17,6 @@ export interface Visited{
 }
 
 const sendVisitedUrl = 'https://bbdvacmap.herokuapp.com/cityReached';
-const sendNextCityUrl = '';
 
 @Injectable({
     providedIn: 'root'
@@ -29,18 +30,30 @@ export class CentralService{
         sensors = data;
     }
 
-    setCities(data: City[]){
+    setCities(data: City[], data2: City[]){
         cities = data;
+        all_cities = data2;
     }
 
     //Adding cities that have been visited to the array
     setVisisted(data: City){
         visited.push(data);     //add the visited city to the array
-        cities.shift();         //removes the first element from the array since that citiy has been visited
+    }
+
+    addVisited(data: City){
+        visited.push(data);
+        cities.shift();         //removes the visited city from the array
+
+        //Send the array of visited cities to team 4 everytime a visited city is added
+        this.sendVisited();
+    }
+
+    setLocations(locations: []){
+        locations = locations;
     }
 
     getCities(){
-        return cities;
+        return all_cities;
     }
 
     getVisited(){
@@ -72,7 +85,15 @@ export class CentralService{
         if(cities.length != 0){
             return cities[0];
         }else{
-            return 'Destination reached. No more cities to visit';
-        }        
+            return false;
+        }
+    }
+
+    getNextLocation(){
+      if(cities.length != 0){
+          return locations[0];
+      }else{
+          return false;
+      }
     }
 }

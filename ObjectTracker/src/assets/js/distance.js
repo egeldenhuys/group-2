@@ -13,6 +13,7 @@ class Distance {
     var dist = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
     return dist.toFixed(2);
   }
+  
   // here you use the objects x and y method (object.x anf object.y)
   static angle(ballx, bally, conex, coney) {
     var dircy = bally - coney;
@@ -21,40 +22,60 @@ class Distance {
     var value = Math.atan2(dircy, dircx);
     value *= 180 / Math.PI;
 
-    if (ballx > conex || bally > coney) {
+      if(ballx > conex || bally > coney )
+    {
       value += 180;
     }
-    if (ballx > conex && bally > coney) {
+   /* if(ballx > conex && bally > coney)
+    {
       value += 180;
-    }
-    if (ballx == conex || bally == coney) {
+    }*/
+    if(ballx == conex || bally == coney )
+    {
       value -= 90;
     }
-    if (ballx == conex && bally == coney) {
+    /*if(ballx == conex && bally == coney)
+    {
       value -= 90;
-    }
+    }*/
 
-    if (-ballx == bally || conex == coney) {
+    if(ballx == bally || conex == coney )
+    {
       value += 180;
     }
-    if (-ballx == bally && conex == coney) {
+    if(ballx == bally && conex == coney)
+    {
       value += 180;
     }
 
-    if (-ballx > -conex || -bally > -coney) {
-      value -= 180;
-    }
-    if (-ballx > -conex && -bally > -coney) {
+    if(ballx == coney || bally == conex)
+    {
       value -= 180;
     }
 
-    while (value < 0) {
+    if(ballx < conex ||bally < coney )
+    {
+      value -= 180;
+    }
+    /* if(ballx < conex && bally < coney)
+    {
+      value -= 180;
+    }*/
+
+    if(ballx == coney || conex == bally )
+    {
+      value += 180;
+    }
+
+    while(value < 0) 
+    { 
       value += 360.0;
-    }
+    };
 
-    while (value > 360) {
+    while(value > 360)
+    {
       value -= 360;
-    }
+    };
 
     var dirct;
 
@@ -76,7 +97,7 @@ class Distance {
       dirct = " North, West";
     }
 
-    return value.toFixed(2) + dirct;
+    return value.toFixed(2);// + dirct;
   }
 
   // loop that constantly shows the distance and angel

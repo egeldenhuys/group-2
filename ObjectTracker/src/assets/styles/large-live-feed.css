@@ -1,13 +1,5 @@
-#video #canvas{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%; 
-    overflow: hidden;
-
-    min-width: 100%; 
-    min-height: 100%; 
+#video, #canvas{
+    position: absolute;
 }
 
 #home_button{
@@ -174,8 +166,8 @@ p{
 
 #p1_div{
     position: fixed;
-    top: 15.5%;
-    left: 81%;
+    top: 14.5%;
+    left: 82%;
 }
 
 #p2_div{

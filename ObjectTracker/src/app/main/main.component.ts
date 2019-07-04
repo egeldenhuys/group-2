@@ -8,12 +8,13 @@ import { CentralService } from '../services/central.service';
 
 //variable used to import different stylesheets
 declare var require: any;
+var style = '';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   // styleUrls: ['../../assets/styles/large.css']
-  styleUrls: ['./main.component.css']
+  // styleUrls: ['./main.component.css']
 })
 
 export class MainComponent implements OnInit {
@@ -85,34 +86,34 @@ export class MainComponent implements OnInit {
     else{
       //Creating the City Objects
       var temp = sensor1_value.split(',');
-      const details1: City = { Name: temp[0], Country: temp[1], ID: 1};
+      const details1: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       temp = sensor2_value.split(',');
-      const details2: City = { Name: temp[0], Country: temp[1], ID: 2};
+      const details2: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       temp = sensor3_value.split(',');
-      const details3: City = { Name: temp[0], Country: temp[1], ID: 3};
+      const details3: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       temp = sensor4_value.split(',');
-      const details4: City = { Name: temp[0], Country: temp[1], ID: 4};
+      const details4: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       temp = sensor5_value.split(',');
-      const details5: City = { Name: temp[0], Country: temp[1], ID: 5};
+      const details5: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       temp = sensor6_value.split(',');
-      const details6: City = { Name: temp[0], Country: temp[1], ID: 6};
+      const details6: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       temp = sensor7_value.split(',');
-      const details7: City = { Name: temp[0], Country: temp[1], ID: 7};
+      const details7: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       temp = sensor8_value.split(',');
-      const details8: City = { Name: temp[0], Country: temp[1], ID: 8};
+      const details8: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       temp = sensor9_value.split(',');
-      const details9: City = { Name: temp[0], Country: temp[1], ID: 9};
+      const details9: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       temp = sensor10_value.split(',');
-      const details10: City = { Name: temp[0], Country: temp[1], ID: 10};
+      const details10: City = { Name: temp[0], Country: temp[1], ID: 0};
 
       var valid = true;
 
@@ -168,20 +169,8 @@ export class MainComponent implements OnInit {
             //Recieve array of Cities in order
             const cities = response.Cities;
 
-            //Creating array of sensors (in correct order)
-            for(var i = 0; i < cities.length; i++){
-              var temp_sensor: Sensor = {ID: cities[i].ID, City: cities[i].Name};
-              this.sensors.push(temp_sensor);
-            }
-
-            //Sending the list of sensors to the Sensor Service
-            this.sensor_service.setSensors(this.sensors);
-
-            //Sending the sensors to the Central service
-            this.central_service.setSensors(this.sensors);
-
             //Sending the cities to the Central service
-            this.central_service.setCities(cities);
+            this.central_service.setCities(cities, cities);
 
             //Setting the start city as visited
             this.central_service.setVisisted(this.start);
@@ -189,7 +178,8 @@ export class MainComponent implements OnInit {
             //Navigating to the live stream
             try {
               this.router.navigate(['live-feed']);
-            } catch(err) {
+            } 
+            catch(err) {
               console.log("Could not redirect to live feed: " + err.message);
             }
           }
@@ -219,8 +209,11 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     //Changing the stylesheet according to the screen size
-    if(window.innerWidth <= 1300 && window.innerWidth >= 1366){
-      require("style-loader!./../../assets/styles/large.css");
+    if(window.innerWidth >= 1300 && window.innerWidth <= 1366){
+      require("style-loader!./../../assets/styles/large.css");        //larger laptop screen
+    }
+    else{
+      require("style-loader!./main.component.css");
     }
   }
 
