@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
 import { Router } from '@angular/router';
 import { City, LocationAPIService } from '../services/location-api.service';
 import { CentralService } from '../services/central.service';
+//import { Distance } from '../../assets/js/distance';
 
 declare var PixelDetector: any;
 
@@ -197,7 +198,14 @@ export class LiveFeedComponent implements OnInit {
     this.webcam_init();
     this.loadLocations();
     this.pixelDetector = new PixelDetector();
+    this.pixelDetector.setConeCount(this.cities.length);
     this.pixelDetector.start();
+
+    this.service.setLocations(this.pixelDetector.identified_cones);
+
+    var next_location = this.service.getNextLocation();
+    var ball_position = this.pixelDetector.this.last_ball_pos;
+    var distance = Distance.distance(ball_position.x, ball_position.y, next_location.x, next_location.y);
 
     // PixelDetector.foo();
   }
