@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
 import { Router } from '@angular/router';
 import { City, LocationAPIService } from '../services/location-api.service';
 import { CentralService } from '../services/central.service';
-//import { Distance } from '../../assets/js/distance';
+import { Distance } from '../../assets/js/distance';
 
 declare var PixelDetector: any;
 

@@ -46,7 +46,7 @@ export class CentralService{
     }
 
     setLocations(locations){
-      this.locations = locations;
+      locations = locations;
     }
 
     getCities(){
