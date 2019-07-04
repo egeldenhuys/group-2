@@ -89,14 +89,14 @@ class PixelDetector {
         tracking.track('#video', ballTracker);
         tracking.track('#video', coneTracker);
     
-        console.log('(1) this.STATE = ' + this.STATE);
-        console.log('(2) STATE = ' + STATE);
+        console.log('(1) this.STATE = ' + this.STATE); // Fine
+        console.log('(2) STATE = ' + STATE); // Returns STATE from parent
         coneTracker.on('track', function (event) {
             console.log('coneTracker.on');
             // console.log("Still trying to track the cones?"); 
             // can't just unsubscribe? Will still be tracking it?
-            console.log('(3) this.STATE = ' + this.STATE);
-            console.log('(5) STATE = ' + STATE);
+            console.log('(3) this.STATE = ' + this.STATE); // undefined
+            console.log('(5) STATE = ' + STATE); // Returns state from parent
             if (this.STATE == "track_cones") {
                 console.log("Tracking Cones..");
                 this.trackCones(event, this.canvas, this.context);
