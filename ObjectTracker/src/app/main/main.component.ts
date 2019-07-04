@@ -53,7 +53,7 @@ export class MainComponent implements OnInit {
   //Array of sensor objects
   sensors: Sensor[] = [];
 
-  constructor(private service1: LocationAPIService, private service2: SensorService, private service3: CentralService, 
+  constructor(private location_service: LocationAPIService, private sensor_service: SensorService, private central_service: CentralService, 
     private renderer: Renderer2, private router: Router) {}
 
   getFormInfo(){
@@ -70,8 +70,6 @@ export class MainComponent implements OnInit {
     const sensor9_value = this.sensor9.nativeElement.value;
     const sensor10_value = this.sensor10.nativeElement.value;
 
-    //check if one city is entered
-
     //Error checking
     if(sensor1_value == "" && sensor2_value == "" && sensor3_value == "" && sensor4_value == "" && sensor5_value == "" &&
         sensor6_value == "" && sensor7_value == "" && sensor8_value == "" && sensor9_value == "" && sensor10_value == ""){
@@ -84,137 +82,37 @@ export class MainComponent implements OnInit {
       this.renderer.setStyle(cover, 'display', 'block');
       this.renderer.setStyle(errors, 'display', 'block');
     }
-    // else if((sensor1_value == sensor2_value || sensor1_value == sensor3_value || sensor1_value == sensor4_value || sensor1_value == sensor5_value ||
-    //   sensor1_value == sensor6_value || sensor1_value == sensor7_value || sensor1_value == sensor8_value || sensor1_value == sensor9_value ||
-    //   sensor1_value == sensor10_value) && (sensor2_value !== "" || sensor3_value != "" || sensor4_value != "" || sensor5_value != "" ||
-    //   sensor6_value != "" || sensor7_value != "" || sensor8_value != "" || sensor9_value != "" || sensor10_value != "")){
-    //   const cover = this.errorCover.nativeElement;
-    //   const errors = this.error.nativeElement;
-    //   const error_message = this.errorMessage.nativeElement;
-
-    //   error_message.innerHTML = "You cannot enter two or more of the same city";
-
-    //   this.renderer.setStyle(cover, 'display', 'block');
-    //   this.renderer.setStyle(errors, 'display', 'block');
-
-    // }
-    // else if((sensor2_value == sensor3_value || sensor2_value == sensor4_value || sensor2_value == sensor5_value || sensor2_value == sensor6_value ||
-    //   sensor2_value == sensor7_value || sensor2_value == sensor8_value || sensor2_value == sensor9_value || sensor2_value == sensor10_value) &&
-    //   (sensor2_value != "")){
-    //   const cover = this.errorCover.nativeElement;
-    //   const errors = this.error.nativeElement;
-    //   const error_message = this.errorMessage.nativeElement;
-
-    //   error_message.innerHTML = "You cannot enter two or more of the same city";
-
-    //   this.renderer.setStyle(cover, 'display', 'block');
-    //   this.renderer.setStyle(errors, 'display', 'block');
-    // }
-    // else if((sensor3_value == sensor4_value || sensor3_value == sensor5_value || sensor3_value == sensor6_value || sensor3_value == sensor7_value ||
-    //   sensor3_value == sensor8_value || sensor3_value == sensor9_value || sensor3_value == sensor10_value) && (sensor3_value != "")){
-    //   const cover = this.errorCover.nativeElement;
-    //   const errors = this.error.nativeElement;
-    //   const error_message = this.errorMessage.nativeElement;
-
-    //   error_message.innerHTML = "You cannot enter two or more of the same city";
-
-    //   this.renderer.setStyle(cover, 'display', 'block');
-    //   this.renderer.setStyle(errors, 'display', 'block');
-    // }
-    // else if((sensor4_value == sensor5_value || sensor4_value ==  sensor6_value ||sensor4_value == sensor7_value || sensor4_value == sensor8_value ||
-    //   sensor4_value == sensor9_value || sensor4_value == sensor10_value) && (sensor4_value != "")){
-    //   const cover = this.errorCover.nativeElement;
-    //   const errors = this.error.nativeElement;
-    //   const error_message = this.errorMessage.nativeElement;
-
-    //   error_message.innerHTML = "You cannot enter two or more of the same city";
-
-    //   this.renderer.setStyle(cover, 'display', 'block');
-    //   this.renderer.setStyle(errors, 'display', 'block');
-    // }
-    // else if(sensor5_value == sensor6_value || sensor5_value == sensor7_value || sensor5_value == sensor8_value ||
-    //   sensor5_value == sensor9_value || sensor5_value == sensor10_value){
-    //   const cover = this.errorCover.nativeElement;
-    //   const errors = this.error.nativeElement;
-    //   const error_message = this.errorMessage.nativeElement;
-
-    //   error_message.innerHTML = "You cannot enter two or more of the same city";
-
-    //   this.renderer.setStyle(cover, 'display', 'block');
-    //   this.renderer.setStyle(errors, 'display', 'block');
-    // }
-    // else if(sensor6_value == sensor7_value || sensor6_value == sensor8_value || sensor6_value == sensor9_value ||
-    //   sensor6_value == sensor10_value){
-    //   const cover = this.errorCover.nativeElement;
-    //   const errors = this.error.nativeElement;
-    //   const error_message = this.errorMessage.nativeElement;
-
-    //   error_message.innerHTML = "You cannot enter two or more of the same city";
-
-    //   this.renderer.setStyle(cover, 'display', 'block');
-    //   this.renderer.setStyle(errors, 'display', 'block');
-    // }
-    // else if(sensor7_value == sensor8_value || sensor7_value == sensor9_value || sensor7_value == sensor10_value){
-    //   const cover = this.errorCover.nativeElement;
-    //   const errors = this.error.nativeElement;
-    //   const error_message = this.errorMessage.nativeElement;
-
-    //   error_message.innerHTML = "You cannot enter two or more of the same city";
-
-    //   this.renderer.setStyle(cover, 'display', 'block');
-    //   this.renderer.setStyle(errors, 'display', 'block');
-    // }
-    // else if(sensor8_value == sensor9_value || sensor8_value == sensor10_value){
-    //   const cover = this.errorCover.nativeElement;
-    //   const errors = this.error.nativeElement;
-    //   const error_message = this.errorMessage.nativeElement;
-
-    //   error_message.innerHTML = "You cannot enter two or more of the same city";
-
-    //   this.renderer.setStyle(cover, 'display', 'block');
-    //   this.renderer.setStyle(errors, 'display', 'block');
-    // }
-    // else if(sensor9_value == sensor10_value){
-    //   const cover = this.errorCover.nativeElement;
-    //   const errors = this.error.nativeElement;
-    //   const error_message = this.errorMessage.nativeElement;
-
-    //   error_message.innerHTML = "You cannot enter two or more of the same city";
-
-    //   this.renderer.setStyle(cover, 'display', 'block');
-    //   this.renderer.setStyle(errors, 'display', 'block');
-    // }
     else{
       //Creating the City Objects
       var temp = sensor1_value.split(',');
-      const details1: City = { Name: temp[0], Country: temp[1]};
+      const details1: City = { Name: temp[0], Country: temp[1], ID: 1};
 
       temp = sensor2_value.split(',');
-      const details2: City = { Name: temp[0], Country: temp[1]};
+      const details2: City = { Name: temp[0], Country: temp[1], ID: 2};
 
       temp = sensor3_value.split(',');
-      const details3: City = { Name: temp[0], Country: temp[1]};
+      const details3: City = { Name: temp[0], Country: temp[1], ID: 3};
 
       temp = sensor4_value.split(',');
-      const details4: City = { Name: temp[0], Country: temp[1]};
+      const details4: City = { Name: temp[0], Country: temp[1], ID: 4};
 
       temp = sensor5_value.split(',');
-      const details5: City = { Name: temp[0], Country: temp[1]};
+      const details5: City = { Name: temp[0], Country: temp[1], ID: 5};
 
       temp = sensor6_value.split(',');
-      const details6: City = { Name: temp[0], Country: temp[1]};
+      const details6: City = { Name: temp[0], Country: temp[1], ID: 6};
 
       temp = sensor7_value.split(',');
-      const details7: City = { Name: temp[0], Country: temp[1]};
+      const details7: City = { Name: temp[0], Country: temp[1], ID: 7};
 
       temp = sensor8_value.split(',');
-      const details8: City = { Name: temp[0], Country: temp[1]};
+      const details8: City = { Name: temp[0], Country: temp[1], ID: 8};
 
       temp = sensor9_value.split(',');
-      const details9: City = { Name: temp[0], Country: temp[1]};
+      const details9: City = { Name: temp[0], Country: temp[1], ID: 9};
 
       temp = sensor10_value.split(',');
-      const details10: City = { Name: temp[0], Country: temp[1]};
+      const details10: City = { Name: temp[0], Country: temp[1], ID: 10};
 
       var valid = true;
 
@@ -265,60 +163,28 @@ export class MainComponent implements OnInit {
 
       if(valid == true){
         //Sending the information to the data service to be posted
-        this.service1.sendLocationInfo(details1, details2, details3, details4, details5, details6, details7, details8, details9, details10, this.start).subscribe((response: any) => {
+        this.location_service.sendLocationInfo(details1, details2, details3, details4, details5, details6, details7, details8, details9, details10, this.start).subscribe((response: any) => {
           if(response.Success == true){
             //Recieve array of Cities in order
             const cities = response.Cities;
 
             //Creating array of sensors (in correct order)
             for(var i = 0; i < cities.length; i++){
-              var id = 0;
-              if(cities[i] == details1){
-                id = 1;
-              }
-              else if(cities[1] == details2){
-                id = 2;
-              }
-              else if(cities[i] == details3){
-                id = 3;
-              }
-              else if(cities[i] == details4){
-                id = 4;
-              }
-              else if(cities[i] == details5){
-                id = 5;
-              }
-              else if(cities[i] == details6){
-                id = 6;
-              }
-              else if(cities[i] == details7){
-                id = 7;
-              }
-              else if(cities[i] == details8){
-                id = 8;
-              }
-              else if(cities[i] == details9){
-                id = 9;
-              }
-              else{
-                id = 10;
-              }
-
-              var temp2: Sensor = {ID: id, IP: '', Port: 0, City: cities[i].Name};
-              this.sensors.push(temp2);
+              var temp_sensor: Sensor = {ID: cities[i].ID, IP: '', Port: 0, City: cities[i].Name};
+              this.sensors.push(temp_sensor);
             }
 
             //Sending the list of sensors to the Sensor Service
-            this.service2.setSensors(this.sensors);
+            this.sensor_service.setSensors(this.sensors);
 
             //Sending the sensors to the Central service
-            this.service3.setSensors(this.sensors);
+            this.central_service.setSensors(this.sensors);
 
             //Sending the cities to the Central service
-            this.service3.setCities(cities);
+            this.central_service.setCities(cities);
 
             //Setting the start city as visited
-            this.service3.setVisisted(this.start);
+            this.central_service.setVisisted(this.start);
 
             //Navigating to the live stream
             try {
