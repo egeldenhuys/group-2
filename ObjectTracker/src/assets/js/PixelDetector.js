@@ -3,11 +3,10 @@ class PixelDetector {
     constructor() {
         console.log("New pixel detector constructed...");
 
-        this.CONE_COUNT = 2; //aka City Count
+        this.CONE_COUNT = 3; //aka City Count
         this.STATE = "track_cones"; //track_cones or track_ball
         //e.g = [  rect , rect , rect , rect ]
         this.identified_cones = []//The final array of cones
-        this.cones_ids = []
 
         //ONLY VALIDATED BALL POSITION
         this.last_ball_pos = { x: 0, y: 0 }
@@ -19,25 +18,41 @@ class PixelDetector {
         //Dont use cur_pos as ball position...
         this.cur_pos = { x: 0, y: 0 };
         this._initBall = true;
+    }
 
-        // console.log("New pixel detector constructed DONE");
+    setConeCount(count) {
+        this.CONE_COUNT = count;
+    }
 
+    startCitySelection() {
+        console.log("Click on the " + this.CONE_COUNT + " cities");
+        this.canvas.addEventListener('mousedown', (e) => {
+            if (this.STATE == "track_cones") {
+                var pos = getCursorPosition(canvas, e);
+
+                //add this to the city
+                this.identified_cones.push({
+                    x: pos.x,
+                    y: pos.y,
+                    id: this.identified_cones.length
+                });
+                console.log("City " + (this.identified_cones.length) + " added")
+
+                if (this.identified_cones.length == this.CONE_COUNT) {
+                    this.endCitySelection();
+                }
+            }
+        });
+    }
+
+    endCitySelection() {
+        console.log("We identified all the cities at:");
+        console.log(this.identified_cones);
+        this.changeState('track_ball');
     }
 
     foo() {
         console.log("hello world!");
-    }
-
-    identifyCones() {
-        console.log('identifyCones');
-        this.identified_cones.forEach((rect) => {
-            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            this.context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-
-            // wait for input
-            var id = prompt("Enter city's ID");
-            this.cones_ids.push(id);
-        });
     }
 
     //Start Tracking - Entry Point
@@ -45,6 +60,7 @@ class PixelDetector {
     //2. Start tracking ball. Report position
     start() {
         console.log('start');
+
         this.canvas = document.getElementById('canvas');
         this.context = canvas.getContext('2d');
 
@@ -54,26 +70,29 @@ class PixelDetector {
         });
 
         //Setup Cone Identifying Color
-        tracking.ColorTracker.registerColor('cone_color', function (r, g, b) {
-            return (r > 200 && g < 80 && b < 80);//true/false
-        });
+        // tracking.ColorTracker.registerColor('cone_color', function (r, g, b) {
+        //     return (r > 200 && g < 80 && b < 80);//true/false
+        // });
 
-        var tracker = new tracking.ColorTracker(['ball_color', 'cone_color']);
+        var tracker = new tracking.ColorTracker('ball_color');
         tracking.track('#video', tracker);
         tracker.on('track', (event) => {
             if (this.STATE == "track_cones") {
-                this.trackCones(event, this.canvas, this.context);
+                //Not using this anymore x_x
+                //this.trackCones(event, this.canvas, this.context);
             } else if (this.STATE == "track_ball") {
                 this.trackBall(event, this.canvas, this.context);
             }
         });
+
+        this.startCitySelection();
     }
 
 
     changeState(new_state) {
         // console.log('changeState');
         if (new_state != undefined) {
-            this.STATE = 'track_cones'; //just reset
+            this.STATE = new_state; //just reset
         } else {
             this.STATE = (this.STATE == 'track_ball') ? 'track_cones' : 'track_ball';
         }
@@ -138,6 +157,7 @@ class PixelDetector {
     }
 
     trackCones(event, canvas, context) {
+        return;
         // console.log('trackCones');
         //clear canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -176,4 +196,11 @@ class PixelDetector {
             }
         });
     }
+}
+
+function getCursorPosition(canvas, event) {
+    const rect = canvas.getBoundingClientRect()
+    const x = event.clientX - rect.left
+    const y = event.clientY - rect.top
+    return { x: x, y: y };
 }
