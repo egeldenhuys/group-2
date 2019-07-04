@@ -6,8 +6,8 @@ import { CentralService } from '../services/central.service';
 declare var PixelDetector: any;
 
 //Global variables describing the size of the video
-const VIDEO_WIDTH = 1000;
-const VIDEO_HEIGHT = 1000;
+const VIDEO_WIDTH = 1080;
+const VIDEO_HEIGHT = 810;
 
 //variable used to import different style sheets
 declare var require: any;
@@ -25,45 +25,45 @@ export class LiveFeedComponent implements OnInit {
   private pixelDetector: any;
 
   //Getting all the orange cirlces
-  @ViewChild("circle1", {static: true}) circle1: ElementRef;
-  @ViewChild("circle2", {static: true}) circle2: ElementRef;
-  @ViewChild("circle3", {static: true}) circle3: ElementRef;
-  @ViewChild("circle4", {static: true}) circle4: ElementRef;
-  @ViewChild("circle5", {static: true}) circle5: ElementRef;
-  @ViewChild("circle6", {static: true}) circle6: ElementRef;
-  @ViewChild("circle7", {static: true}) circle7: ElementRef;
-  @ViewChild("circle8", {static: true}) circle8: ElementRef;
-  @ViewChild("circle9", {static: true}) circle9: ElementRef;
-  @ViewChild("circle10", {static: true}) circle10: ElementRef;
+  @ViewChild("circle1", { static: true }) circle1: ElementRef;
+  @ViewChild("circle2", { static: true }) circle2: ElementRef;
+  @ViewChild("circle3", { static: true }) circle3: ElementRef;
+  @ViewChild("circle4", { static: true }) circle4: ElementRef;
+  @ViewChild("circle5", { static: true }) circle5: ElementRef;
+  @ViewChild("circle6", { static: true }) circle6: ElementRef;
+  @ViewChild("circle7", { static: true }) circle7: ElementRef;
+  @ViewChild("circle8", { static: true }) circle8: ElementRef;
+  @ViewChild("circle9", { static: true }) circle9: ElementRef;
+  @ViewChild("circle10", { static: true }) circle10: ElementRef;
 
   //Getting all the paragraph elements to dynamically change the location
-  @ViewChild("p1", {static: true}) p1: ElementRef;
-  @ViewChild("p2", {static: true}) p2: ElementRef;
-  @ViewChild("p3", {static: true}) p3: ElementRef;
-  @ViewChild("p4", {static: true}) p4: ElementRef;
-  @ViewChild("p5", {static: true}) p5: ElementRef;
-  @ViewChild("p6", {static: true}) p6: ElementRef;
-  @ViewChild("p7", {static: true}) p7: ElementRef;
-  @ViewChild("p8", {static: true}) p8: ElementRef;
-  @ViewChild("p9", {static: true}) p9: ElementRef;
-  @ViewChild("p10", {static: true}) p10: ElementRef;
+  @ViewChild("p1", { static: true }) p1: ElementRef;
+  @ViewChild("p2", { static: true }) p2: ElementRef;
+  @ViewChild("p3", { static: true }) p3: ElementRef;
+  @ViewChild("p4", { static: true }) p4: ElementRef;
+  @ViewChild("p5", { static: true }) p5: ElementRef;
+  @ViewChild("p6", { static: true }) p6: ElementRef;
+  @ViewChild("p7", { static: true }) p7: ElementRef;
+  @ViewChild("p8", { static: true }) p8: ElementRef;
+  @ViewChild("p9", { static: true }) p9: ElementRef;
+  @ViewChild("p10", { static: true }) p10: ElementRef;
 
   //Getting the container divs for the paragraph elements to display them
-  @ViewChild("p1_div", {static: true}) p1_div: ElementRef;
-  @ViewChild("p2_div", {static: true}) p2_div: ElementRef;
-  @ViewChild("p3_div", {static: true}) p3_div: ElementRef;
-  @ViewChild("p4_div", {static: true}) p4_div: ElementRef;
-  @ViewChild("p5_div", {static: true}) p5_div: ElementRef;
-  @ViewChild("p6_div", {static: true}) p6_div: ElementRef;
-  @ViewChild("p7_div", {static: true}) p7_div: ElementRef;
-  @ViewChild("p8_div", {static: true}) p8_div: ElementRef;
-  @ViewChild("p9_div", {static: true}) p9_div: ElementRef;
-  @ViewChild("p10_div", {static: true}) p10_div: ElementRef;
+  @ViewChild("p1_div", { static: true }) p1_div: ElementRef;
+  @ViewChild("p2_div", { static: true }) p2_div: ElementRef;
+  @ViewChild("p3_div", { static: true }) p3_div: ElementRef;
+  @ViewChild("p4_div", { static: true }) p4_div: ElementRef;
+  @ViewChild("p5_div", { static: true }) p5_div: ElementRef;
+  @ViewChild("p6_div", { static: true }) p6_div: ElementRef;
+  @ViewChild("p7_div", { static: true }) p7_div: ElementRef;
+  @ViewChild("p8_div", { static: true }) p8_div: ElementRef;
+  @ViewChild("p9_div", { static: true }) p9_div: ElementRef;
+  @ViewChild("p10_div", { static: true }) p10_div: ElementRef;
 
-  constructor(private router: Router, private service: CentralService, 
+  constructor(private router: Router, private service: CentralService,
     private renderer: Renderer2) { }
 
-  loadLocations(){
+  loadLocations() {
     const circle_1 = this.circle1.nativeElement;
     const circle_2 = this.circle2.nativeElement;
     const circle_3 = this.circle3.nativeElement;
@@ -111,62 +111,62 @@ export class LiveFeedComponent implements OnInit {
     console.log(cities);
 
     //Displaying the side directions based on the number of cities recieved
-    if(length != 0){
+    if (length != 0) {
       var num = 0;
       this.renderer.setStyle(circle_1, 'display', 'block');
       this.renderer.setStyle(p_1_div, 'display', 'block');
       p_1.innerHTML = cities[num].Name;
 
       num += 1;
-      if(num != length){
+      if (num != length) {
         this.renderer.setStyle(circle_2, 'display', 'block');
         this.renderer.setStyle(p_2_div, 'display', 'block');
         p_2.innerHTML = cities[num].Name;
 
         num += 1;
-        if(num != length){
+        if (num != length) {
           this.renderer.setStyle(circle_3, 'display', 'block');
           this.renderer.setStyle(p_3_div, 'display', 'block');
           p_3.innerHTML = cities[num].Name;
 
           num += 1;
-          if(num != length){
+          if (num != length) {
             this.renderer.setStyle(circle_4, 'display', 'block');
             this.renderer.setStyle(p_4_div, 'display', 'block');
             p_4.innerHTML = cities[num].Name;
 
             num += 1;
-            if(num != length){
+            if (num != length) {
               this.renderer.setStyle(circle_5, 'display', 'block');
               this.renderer.setStyle(p_5_div, 'display', 'block');
               p_5.innerHTML = cities[num].Name;
 
               num += 1;
-              if(num != length){
+              if (num != length) {
                 this.renderer.setStyle(circle_6, 'display', 'block');
                 this.renderer.setStyle(p_6_div, 'display', 'block');
                 p_6.innerHTML = cities[num].Name;
 
                 num += 1;
-                if(num != length){
+                if (num != length) {
                   this.renderer.setStyle(circle_7, 'display', 'block');
                   this.renderer.setStyle(p_7_div, 'display', 'block');
                   p_7.innerHTML = cities[num].Name;
 
                   num += 1;
-                  if(num != length){
+                  if (num != length) {
                     this.renderer.setStyle(circle_8, 'display', 'block');
                     this.renderer.setStyle(p_8_div, 'display', 'block');
                     p_8.innerHTML = cities[num].Name;
 
                     num += 1;
-                    if(num != length){
+                    if (num != length) {
                       this.renderer.setStyle(circle_9, 'display', 'block');
                       this.renderer.setStyle(p_9_div, 'display', 'block');
                       p_9.innerHTML = cities[num].Name;
 
                       num += 1;
-                      if(num != length){
+                      if (num != length) {
                         this.renderer.setStyle(circle_10, 'display', 'block');
                         this.renderer.setStyle(p_10_div, 'display', 'block');
                         p_10.innerHTML = cities[num].Name;
@@ -184,10 +184,10 @@ export class LiveFeedComponent implements OnInit {
 
   ngOnInit() {
     //Changing the stylesheet according to the screen size
-    if(window.innerWidth <= 1300 && window.innerWidth >= 1366){
+    if (window.innerWidth <= 1300 && window.innerWidth >= 1366) {
       require("style-loader!./../../assets/styles/large.css");
     }
-    else{
+    else {
       require("style-loader!./live-feed.component.css");
     }
 
@@ -212,7 +212,7 @@ export class LiveFeedComponent implements OnInit {
     // let ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
     // ctx.strokeStyle = "#FF0000";
     // ctx.fillRect(0, 0, 20, 20);
-    
+
     navigator.mediaDevices
       .getUserMedia({
         audio: false,
@@ -228,11 +228,11 @@ export class LiveFeedComponent implements OnInit {
       });
   }
 
-  returnHome(){
+  returnHome() {
     //Navigating to the main page
     try {
       this.router.navigate(['']);
-    } catch(err) {
+    } catch (err) {
       console.log("Could not redirect to live feed: " + err.message);
     }
   }
