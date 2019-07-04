@@ -7,7 +7,7 @@ class PixelDetector {
         this.STATE = "track_cones"; //track_cones or track_ball
         //e.g = [  rect , rect , rect , rect ]
         this.identified_cones = []//The final array of cones
-        this.cones_names = []
+        this.cones_ids = []
 
         //ONLY VALIDATED BALL POSITION
         this.last_ball_pos = { x: 0, y: 0 }
@@ -30,14 +30,14 @@ class PixelDetector {
 
     identifyCones() {
         console.log('identifyCones');
-        for (var i = 0; i < this.identified_cones.length; i++) {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            var rect = this.identified_cones[i];
-            context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+        this.identified_cones.forEach((rect) => {
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+
             // wait for input
             var id = prompt("Enter city's ID");
-            this.cones_names.push(id);
-        }
+            this.cones_ids.push(id);
+        });
     }
 
     //Start Tracking - Entry Point
@@ -55,7 +55,7 @@ class PixelDetector {
 
         //Setup Cone Identifying Color
         tracking.ColorTracker.registerColor('cone_color', function (r, g, b) {
-            return (r > 150 && g < 80 && b < 80);//true/false
+            return (r > 200 && g < 80 && b < 80);//true/false
         });
 
         var tracker = new tracking.ColorTracker(['ball_color', 'cone_color']);
@@ -145,6 +145,7 @@ class PixelDetector {
         //Handle tracked objects
         // resultCount = event.data.length;
         var validCount = 0;
+        this.identified_cones = [];
         event.data.forEach((rect) => {
             if (rect.color != 'cone_color')
                 return;
@@ -156,6 +157,7 @@ class PixelDetector {
 
             //Save the entire rect in identified_cones
             // TODO: Save cones?
+            this.identified_cones.push(rect);
 
             //Draw it.
             context.strokeStyle = '#FF0000';
@@ -164,11 +166,13 @@ class PixelDetector {
             if (validCount == this.CONE_COUNT) {
                 console.log("We identified all the cones");
                 this.changeState();
+                // this.identifyCones();
+                context.clearRect(0, 0, canvas.width, canvas.height);
             } else if (validCount < this.CONE_COUNT) {
                 console.log("We need more cones");
             } else {
                 console.log("We identified too many cones");
-                this.changeState('track_cones');
+                // this.changeState('track_cones');
             }
         });
     }
