@@ -6,8 +6,8 @@ import { CentralService } from '../services/central.service';
 declare var PixelDetector: any;
 
 //Global variables describing the size of the video
-const VIDEO_WIDTH = 1400;
-const VIDEO_HEIGHT = 1065;
+const VIDEO_WIDTH = 1000;
+const VIDEO_HEIGHT = 1000;
 
 //variable used to import different style sheets
 declare var require: any;
@@ -22,6 +22,7 @@ export class LiveFeedComponent implements OnInit {
   title = 'pixel-tracker';
   private video: HTMLVideoElement;
   private canvas: HTMLCanvasElement;
+  private pixelDetector: any;
 
   //Getting all the orange cirlces
   @ViewChild("circle1", {static: true}) circle1: ElementRef;
@@ -188,6 +189,8 @@ export class LiveFeedComponent implements OnInit {
 
     this.webcam_init();
     this.loadLocations();
+    this.pixelDetector = new PixelDetector();
+    this.pixelDetector.start();
 
     // PixelDetector.foo();
   }

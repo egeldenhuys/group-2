@@ -19,7 +19,7 @@ class PixelDetector {
         this.cur_pos = { x: 0, y: 0 };
         this._initBall = true;
 
-        console.log("New pixel detector constructed DONE");
+        // console.log("New pixel detector constructed DONE");
 
     }
     
@@ -33,14 +33,14 @@ class PixelDetector {
     }
     
     trackCones(event, canvas, context) {
-        console.log('trackCones');
+        // console.log('trackCones');
         //clear canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
     
         //Handle tracked objects
-        resultCount = event.data.length;
+        // resultCount = event.data.length;
         var validCount = 0;
-        event.data.forEach(function (rect) {
+        event.data.forEach((rect) => {
             //Check if rect is valid function
             //<<< INSERT VALIDATE FUNCTION HERE >>>>//
     
@@ -89,37 +89,33 @@ class PixelDetector {
         tracking.track('#video', ballTracker);
         tracking.track('#video', coneTracker);
     
-        console.log('(1) this.STATE = ' + this.STATE); // Fine
-        console.log('(2) STATE = ' + STATE); // Returns STATE from parent
-        coneTracker.on('track', function (event) {
-            console.log('coneTracker.on');
+        coneTracker.on('track', (event) => {
+            // console.log('coneTracker.on');
             // console.log("Still trying to track the cones?"); 
             // can't just unsubscribe? Will still be tracking it?
-            console.log('(3) this.STATE = ' + this.STATE); // undefined
-            console.log('(5) STATE = ' + STATE); // Returns state from parent
             if (this.STATE == "track_cones") {
-                console.log("Tracking Cones..");
+                // console.log("Tracking Cones..");
                 this.trackCones(event, this.canvas, this.context);
             }
-            console.log('coneTracker.off');
+            // console.log('coneTracker.off');
         });
     
-        ballTracker.on('track', function (event) {
-            console.log('ballTracker.on');
+        ballTracker.on('track', (event) => {
+            // console.log('ballTracker.on');
             if (this.STATE == "track_ball") {
-                console.log("Tracking Balls..");
+                // console.log("Tracking Balls..");
                 this.trackBall(event, canvas, this.context);
             }
         });
 
-        console.log('start end');
+        // console.log('start end');
     }
     
     
     changeState() {
-        console.log('changeState');
+        // console.log('changeState');
         this.STATE = (this.STATE == 'track_ball') ? 'track_cones' : 'track_ball';
-        document.getElementById("current-tracking-btn").innerHTML = this.STATE;
+        // document.getElementById("current-tracking-btn").innerHTML = this.STATE;
         console.log(this.STATE);
     }
     
@@ -138,8 +134,8 @@ class PixelDetector {
     }
     
     trackBall(event, canvas, context) {
-        console.log('trackBall');
-        event.data.forEach(function (rect) {
+        // console.log('trackBall');
+        event.data.forEach((rect) => {
             context.strokeStyle = '#FF0000';//Set Style
     
             //cur_pos might not be the ball's position
@@ -159,7 +155,7 @@ class PixelDetector {
                     //Save Position and Draw
                     context.beginPath();
     
-                    context.moveTo(last_ball_pos.x, this.last_ball_pos.y);
+                    context.moveTo(this.last_ball_pos.x, this.last_ball_pos.y);
                     context.lineTo(this.cur_pos.x, this.cur_pos.y);
     
                     context.stroke();
@@ -168,7 +164,7 @@ class PixelDetector {
                     this.last_ball_pos.y = this.cur_pos.y;
     
                     //Report the ball position to whatever
-                    this.reportBallPosition(last_ball_pos);
+                    this.reportBallPosition(this.last_ball_pos);
                 } else {
                     //For now, don't do anything 
                     //We say it is not the ball...
@@ -178,6 +174,7 @@ class PixelDetector {
             //consider report the last position always - not just on update?
             //reportBallPosition(last_ball_pos);
         });
+        // console.log('trackBall END');
     }
     
     
