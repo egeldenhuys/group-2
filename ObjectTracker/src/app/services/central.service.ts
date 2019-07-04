@@ -43,6 +43,9 @@ export class CentralService{
     addVisited(data: City){
         visited.push(data);
         cities.shift();         //removes the visited city from the array
+
+        //Send the array of visited cities to team 4 everytime a visited city is added
+        this.sendVisited();
     }
 
     setLocations(locations: []){
