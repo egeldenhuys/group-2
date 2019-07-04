@@ -25,9 +25,6 @@ function angle(ballx, bally, conex, coney)
   
     var value = Math.atan2(dircy, dircx); 
     value *= 180 / Math.PI;
-
-    
-
    
     if(ballx > conex || bally > coney )
     {
