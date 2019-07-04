@@ -29,50 +29,18 @@ class PixelDetector {
     }
 
     identifyCones() {
-
         console.log('identifyCones');
-        for(var i = 0; i < this.identified_cones.length; i++){
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          var rect = this.identified_cones[i];
-          context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-          // wait for input
-          var id = promt("Enter city's ID");
-          this.cones_names.push(id);
+        for (var i = 0; i < this.identified_cones.length; i++) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            var rect = this.identified_cones[i];
+            context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+            // wait for input
+            var id = prompt("Enter city's ID");
+            this.cones_names.push(id);
         }
     }
 
-    trackCones(event, canvas, context) {
-        // console.log('trackCones');
-        //clear canvas
-        context.clearRect(0, 0, canvas.width, canvas.height);
 
-        //Handle tracked objects
-        // resultCount = event.data.length;
-        var validCount = 0;
-        event.data.forEach((rect) => {
-            //Check if rect is valid function
-            //<<< INSERT VALIDATE FUNCTION HERE >>>>//
-
-            //At this point it is valid
-            validCount++;
-
-            //Save the entire rect in identified_cones
-            // TODO: Save cones?
-
-            //Draw it.
-            context.strokeStyle = '#FF0000';
-            context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-
-            if (validCount == this.CONE_COUNT) {
-                console.log("We identified all the cones");
-                this.changeState();
-            } else if (validCount < this.CONE_COUNT) {
-                console.log("We need more cones");
-            } else {
-                console.log("We identified too many cones");
-            }
-        });
-    }
 
     //Start Tracking - Entry Point
     //1. Find Cones (pixel positions stored in ...)
@@ -92,43 +60,28 @@ class PixelDetector {
             return (r > 150 && g < 80 && b < 80);//true/false
         });
 
-        var ballTracker = new tracking.ColorTracker('ball_color');
-        var coneTracker = new tracking.ColorTracker('cone_color');
-
-        tracking.track('#video', ballTracker);
-        tracking.track('#video', coneTracker);
-
-        coneTracker.on('track', (event) => {
-            // console.log('coneTracker.on');
-            // console.log("Still trying to track the cones?");
-            // can't just unsubscribe? Will still be tracking it?
+        var tracker = new tracking.ColorTracker(['ball_color', 'cone_color']);
+        tracking.track('#video', tracker);
+        tracker.on('track', (event) => {
             if (this.STATE == "track_cones") {
-                // console.log("Tracking Cones..");
                 this.trackCones(event, this.canvas, this.context);
-            }
-            // console.log('coneTracker.off');
-        });
-
-        ballTracker.on('track', (event) => {
-            // console.log('ballTracker.on');
-            if (this.STATE == "track_ball") {
-                // console.log("Tracking Balls..");
-                this.trackBall(event, canvas, this.context);
+            } else if (this.STATE == "track_ball") {
+                this.trackBall(event, this.canvas, this.context);
             }
         });
-
-        // console.log('start end');
     }
 
 
-    changeState() {
+    changeState(new_state) {
         // console.log('changeState');
-        this.STATE = (this.STATE == 'track_ball') ? 'track_cones' : 'track_ball';
+        if (new_state != undefined) {
+            this.STATE = 'track_cones'; //just reset
+        } else {
+            this.STATE = (this.STATE == 'track_ball') ? 'track_cones' : 'track_ball';
+        }
         // document.getElementById("current-tracking-btn").innerHTML = this.STATE;
         console.log(this.STATE);
     }
-
-
 
     //Used to (semi) avoid tracking objects
     //other than the ball  (using last position threshold)
@@ -143,8 +96,10 @@ class PixelDetector {
     }
 
     trackBall(event, canvas, context) {
-        // console.log('trackBall');
         event.data.forEach((rect) => {
+            if (rect.color != 'ball_color')
+                return;
+
             context.strokeStyle = '#FF0000';//Set Style
 
             //cur_pos might not be the ball's position
@@ -179,89 +134,44 @@ class PixelDetector {
                     //We say it is not the ball...
                 }
             }
-
             //consider report the last position always - not just on update?
             //reportBallPosition(last_ball_pos);
         });
-        // console.log('trackBall END');
     }
 
+    trackCones(event, canvas, context) {
+        // console.log('trackCones');
+        //clear canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
+        //Handle tracked objects
+        // resultCount = event.data.length;
+        var validCount = 0;
+        event.data.forEach((rect) => {
+            if (rect.color != 'cone_color')
+                return;
+            //Check if rect is valid function
+            //<<< INSERT VALIDATE FUNCTION HERE >>>>//
 
-    // //Gets called once.
-    // function trackBall() {
-        // var canvas = document.getElementById('canvas');
-        // var context = canvas.getContext('2d');
-        // var last_x, last_y, x, y = 0;
-        // var begin = true;
+            //At this point it is valid
+            validCount++;
 
-        // if (STATE == 'init') {
+            //Save the entire rect in identified_cones
+            // TODO: Save cones?
 
-        // } else {
+            //Draw it.
+            context.strokeStyle = '#FF0000';
+            context.strokeRect(rect.x, rect.y, rect.width, rect.height);
 
-        // }
-        // var tracker = new tracking.ColorTracker('yellow');
-        // tracking.track('#video', tracker, { camera: true });
-
-        // tracker.on('track', function (event) {
-        //     if (STATE == 'init') {
-        //         //clear canvas
-        //         context.clearRect(0, 0, canvas.width, canvas.height);
-
-        //         //Handle tracked objects
-        //         resultCount = event.data.length;
-        //         var validCount = 0;
-        //         event.data.forEach(function (rect) {
-        //             //Check if rect is valid function
-
-        //             //At this point it is valid
-        //             validCount++;
-
-        //             //Draw it.
-        //             context.strokeStyle = '#FF0000';
-        //             context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-
-        //             if (validCount == CONE_COUNT) {
-        //                 console.log("We identified all the cones");
-        //                 changeState("changeState");
-        //             } else if (validCount < CONE_COUNT) {
-        //                 console.log("We need more cones");
-        //             } else {
-        //                 console.log("We identified too many cones");
-        //             }
-        //         });
-
-        //     } else {
-        //         //Track Ball
-        //         console.log('Looking for Balls');
-        //         event.data.forEach(function (rect) {
-        //             context.strokeStyle = '#FF0000';
-        //             if (begin) {
-        //                 begin = false;
-        //                 x = rect.x + rect.width / 2;
-        //                 y = rect.y + rect.height / 2;
-        //             }
-        //             else {
-        //                 last_x = x;
-        //                 last_y = y;
-
-        //                 x = rect.x + rect.width / 2;
-        //                 y = rect.y + rect.height / 2;
-
-        //                 if (Math.abs(last_x - x) < 40 && Math.abs(last_y - y) < 40) {
-        //                     context.beginPath();
-        //                     context.moveTo(last_x, last_y);
-        //                     context.lineTo(x, y);
-        //                     context.stroke();
-        //                 }
-        //                 else {
-        //                     x = last_x;
-        //                     y = last_y;
-        //                 }
-        //             }
-        //         });
-        //     }
-        // });
-
-    // }
+            if (validCount == this.CONE_COUNT) {
+                console.log("We identified all the cones");
+                this.changeState();
+            } else if (validCount < this.CONE_COUNT) {
+                console.log("We need more cones");
+            } else {
+                console.log("We identified too many cones");
+                changeState('track_cones');
+            }
+        });
+    }
 }
