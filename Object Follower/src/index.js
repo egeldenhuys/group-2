@@ -9,6 +9,10 @@ class App extends React.Component {
   videoRef = React.createRef();
   canvasRef = React.createRef();
 
+  x_history = [];
+  y_history = [];
+  number_points = 0;
+
   componentDidMount() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       const webCamPromise = navigator.mediaDevices
@@ -49,7 +53,7 @@ class App extends React.Component {
 
   renderPredictions = predictions => {
     const ctx = this.canvasRef.current.getContext("2d");
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    //ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     // Font options.
     const font = "16px sans-serif";
     ctx.font = font;
@@ -59,10 +63,25 @@ class App extends React.Component {
       const y = prediction.bbox[1];
       const width = prediction.bbox[2];
       const height = prediction.bbox[3];
-      // Draw the bounding box.
-      ctx.strokeStyle = "#00FFFF";
+      var x_centre = x+(width/2);
+      var y_centre = y+(height/2);
+      this.x_history.push(x_centre);
+      this.y_history.push(y_centre);
+      this.number_points++;
+
+      // // Draw the bounding box.
+      ctx.strokeStyle = "#FF0000";
       ctx.lineWidth = 1;
-      ctx.strokeRect(x+(width/2)-1, y+(height/2)-1, 2, 2);
+      if (this.number_points >= 2){
+        ctx.beginPath();
+        ctx.moveTo(this.x_history[this.number_points-2],this.y_history[this.number_points-2]);
+        ctx.lineTo(this.x_history[this.number_points-1],this.y_history[this.number_points-1]);
+        ctx.stroke();
+      }
+      else{
+        ctx.strokeRect(x_centre-1, y_centre-1, 2, 2);
+      }
+
       // Draw the label background.
       ctx.fillStyle = "#00FFFF";
       //const textWidth = ctx.measureText(prediction.class).width;

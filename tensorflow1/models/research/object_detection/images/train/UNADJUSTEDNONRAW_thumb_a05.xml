@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>UNADJUSTEDNONRAW_thumb_a05.jpg</filename>
+	<path>/Users/nicholaspym/Desktop/tensorflow1/models/research/object_detection/images/train/UNADJUSTEDNONRAW_thumb_a05.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>768</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>bottle</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>172</xmin>
+			<ymin>510</ymin>
+			<xmax>360</xmax>
+			<ymax>821</ymax>
+		</bndbox>
+	</object>
+</annotation>

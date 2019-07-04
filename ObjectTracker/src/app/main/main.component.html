@@ -1,11 +1,63 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <!-- <div class="ball"></div> -->
+        <div id="main_div"></div>
+        <h1 id="heading">Locations</h1>
+        <div id="container_div"></div>
+        <div id="icons">
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+        </div>
+        <div id="form">
+            <input #sensor1 class="form_input" placeholder="Location for sensor 1, Country" type="text"><br/><br/><br/><br/>
+            <input #sensor2 class="form_input" placeholder="Location for sensor 2, Country" type="text"><br/><br/><br/><br/>
+            <input #sensor3 class="form_input" placeholder="Location for sensor 3, Country" type="text"><br/><br/><br/><br/>
+            <input #sensor4 class="form_input" placeholder="Location for sensor 4, Country" type="text"><br/><br/><br/><br/>
+            <input #sensor5 class="form_input" placeholder="Location for sensor 5, Country" type="text"><br/><br/><br/><br/>
+        </div>
+        <div id="start">
+            <label class="container"><input type="radio" #start1 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start2 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start3 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start4 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start5 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+        </div>
 
-<div id="main_div">
-    <div id="container_div">
-        <mat-icon id="sensor1" class="location_icon">room</mat-icon>
-        <mat-icon id="sensor2" class="location_icon">room</mat-icon>
-        <mat-icon id="sensor3" class="location_icon">room</mat-icon>
-        <mat-icon id="sensor4" class="location_icon">room</mat-icon>
-        <mat-icon id="sensor5" class="location_icon">room</mat-icon>
-    </div>
-</div>
+        <div id="icons2">
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+            <mat-icon class="location_icon">room</mat-icon><br/><br/>
+        </div>
+        <div id="form2">
+            <input #sensor6 class="form_input" placeholder="Location for sensor 6, Country" type="text"><br/><br/><br/><br/>
+            <input #sensor7 class="form_input" placeholder="Location for sensor 7, Country" type="text"><br/><br/><br/><br/>
+            <input #sensor8 class="form_input" placeholder="Location for sensor 8, Country" type="text"><br/><br/><br/><br/>
+            <input #sensor9 class="form_input" placeholder="Location for sensor 9, Country" type="text"><br/><br/><br/><br/>
+            <input #sensor10 class="form_input" placeholder="Location for sensor 10, Country" type="text"><br/><br/><br/><br/>
+        </div>
+        <div id="start2">
+            <label class="container"><input type="radio" #start6 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start7 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start8 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start9 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+            <label class="container"><input type="radio" #start10 name="radio"><span class="checkmark"></span></label><br/><br/><br/><br/>
+        </div>
+
+        <button (click) = "getFormInfo()" id="submit_button">Go</button>
+
+        <div (click) = "removeErrorMessage()" #errorCover id="error_cover"></div>
+
+        <div #error id="error_message">
+            <h1>Error</h1>
+            <p #errorMessage>This is the message</p>
+        </div>
+    </body>
+</html>
