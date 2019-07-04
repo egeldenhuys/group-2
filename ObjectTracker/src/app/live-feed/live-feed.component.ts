@@ -24,6 +24,7 @@ export class LiveFeedComponent implements OnInit {
   private video: HTMLVideoElement;
   private canvas: HTMLCanvasElement;
   private pixelDetector: any;
+  length = 0;
 
   //Getting all the orange cirlces
   @ViewChild("circle1", { static: true }) circle1: ElementRef;
@@ -112,7 +113,7 @@ export class LiveFeedComponent implements OnInit {
     }
 
     // const cities = temp;
-    var length = cities.length;
+    length = cities.length;
 
     //Displaying the side directions based on the number of cities recieved
     if (length != 0) {
@@ -198,7 +199,7 @@ export class LiveFeedComponent implements OnInit {
     this.webcam_init();
     this.loadLocations();
     this.pixelDetector = new PixelDetector();
-    this.pixelDetector.setConeCount(this.cities.length);
+    this.pixelDetector.setConeCount(length);
     this.pixelDetector.start();
 
     this.service.setLocations(this.pixelDetector.identified_cones);
