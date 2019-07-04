@@ -232,4 +232,23 @@ export class LiveFeedComponent implements OnInit {
       console.log("Could not redirect to live feed: " + err.message);
     }
   }
+
+  onCanvasClick(ev: MouseEvent) {
+    console.log(ev);
+  }
+
+  // mouseTrapInit() {
+  //   console.log("Click target on canvas");
+  //   this.canvas.onclick(ev: MouseEvent).
+
+  // }
+
+  // mouseTrap() {
+
+  //   setTimeout(this.mouseTrapIterate())
+  // }
+
+  mouseTrapIterate(cityX, cityY) {
+
+  }
 }
