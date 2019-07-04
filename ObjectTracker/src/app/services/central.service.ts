@@ -9,6 +9,7 @@ var visited: City[] = [];       //Array of cities that have been visited startin
 var cities: City[] = [];        //Array of cities in the order in which they need to be visitsed
 var all_cities: City[] = [];
 var sensors: Sensor[] = [];     //Array of sensors in the order in which they need to be visited
+var locations = [];
 
 //Defines an object to be able to send the visited array as a json
 export interface Visited{
@@ -38,6 +39,10 @@ export class CentralService{
     setVisisted(data: City){
         visited.push(data);     //add the visited city to the array
         // cities.shift();         //removes the first element from the array since that citiy has been visited
+    }
+
+    setLocations(locations){
+      this.locations = locations;
     }
 
     getCities(){
@@ -74,6 +79,14 @@ export class CentralService{
             return cities[0];
         }else{
             return false;
-        }        
+        }
+    }
+
+    getNextLocation(){
+      if(cities.length != 0){
+          return locations[0];
+      }else{
+          return false;
+      }
     }
 }
