@@ -215,9 +215,9 @@ export class LiveFeedComponent implements OnInit {
     this.loadLocations();
     //console.error("PixelDetector has been disabled!");
     this.pixelDetector = new PixelDetector();
-    this.pixelDetector.setConeCount(length);
+    this.pixelDetector.setConeCount(3);
 
-    this.pixelDetector.start();  
+    this.pixelDetector.start();
     this.main_logic();
 
     window["ball"] = this.ballService;
