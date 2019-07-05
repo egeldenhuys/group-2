@@ -86,34 +86,34 @@ export class MainComponent implements OnInit {
     else{
       //Creating the City Objects
       var temp = sensor1_value.split(',');
-      const details1: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details1: City = { Name: temp[0], Country: temp[1], ID: 1};
 
       temp = sensor2_value.split(',');
-      const details2: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details2: City = { Name: temp[0], Country: temp[1], ID: 2};
 
       temp = sensor3_value.split(',');
-      const details3: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details3: City = { Name: temp[0], Country: temp[1], ID: 3};
 
       temp = sensor4_value.split(',');
-      const details4: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details4: City = { Name: temp[0], Country: temp[1], ID: 4};
 
       temp = sensor5_value.split(',');
-      const details5: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details5: City = { Name: temp[0], Country: temp[1], ID: 5};
 
       temp = sensor6_value.split(',');
-      const details6: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details6: City = { Name: temp[0], Country: temp[1], ID: 6};
 
       temp = sensor7_value.split(',');
-      const details7: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details7: City = { Name: temp[0], Country: temp[1], ID: 7};
 
       temp = sensor8_value.split(',');
-      const details8: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details8: City = { Name: temp[0], Country: temp[1], ID: 8};
 
       temp = sensor9_value.split(',');
-      const details9: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details9: City = { Name: temp[0], Country: temp[1], ID: 9};
 
       temp = sensor10_value.split(',');
-      const details10: City = { Name: temp[0], Country: temp[1], ID: 0};
+      const details10: City = { Name: temp[0], Country: temp[1], ID: 10};
 
       var valid = true;
 
