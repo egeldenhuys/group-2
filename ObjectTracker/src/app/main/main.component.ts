@@ -168,6 +168,9 @@ export class MainComponent implements OnInit {
           if(response.Success == true){
             //Recieve array of Cities in order
             const cities = response.Cities;
+            for(var i = 0; i < cities.length; i++){
+              cities[i].ID = i + 1;
+            }
 
             //Sending the cities to the Central service
             this.central_service.setCities(cities, cities);
