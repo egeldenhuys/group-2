@@ -291,6 +291,10 @@ export class LiveFeedComponent implements OnInit {
     ctx.fillStyle = "#00FF00";
     ctx.fillRect(this.mouseX, this.mouseY, 1, 1);
 
+
+    let angle = Distance.angle(this.mouseX, this.mouseY, this.destinationX, this.destinationY) - 90;
+    console.log("Angle = " + angle);
+
   }
 
   mouseTrapInit() {
@@ -309,8 +313,8 @@ export class LiveFeedComponent implements OnInit {
     let dist = Distance.distance(this.mouseX, this.mouseY, this.destinationX, this.destinationY) as number;
     console.log("Distance = " + dist);
 
-    let angle = Distance.angle(this.mouseX, this.mouseY, this.destinationX, this.destinationY) - 90;
-    console.log("Angle = " + dist);
+    let angle = Distance.angle(this.mouseX, this.mouseY, this.destinationX, this.destinationY);
+    console.log("Angle = " + angle);
 
     if (dist > 200) {
       this.ballService.roll(100, angle);

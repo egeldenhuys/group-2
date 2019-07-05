@@ -22,22 +22,33 @@ class Distance {
     var value = Math.atan2(dircy, dircx);
     value *= 180 / Math.PI;
 
+    while(value < 0) 
+    { 
+      value += 360.0;
+    };
+
+    while(value > 360)
+    {
+      value -= 360;
+    };
+
       if(ballx > conex || bally > coney )
     {
       value += 180;
     }
-   /* if(ballx > conex && bally > coney)
+    if(ballx > conex && bally > coney)
     {
       value += 180;
-    }*/
+    }
+    
     if(ballx == conex || bally == coney )
     {
       value -= 90;
     }
-    /*if(ballx == conex && bally == coney)
+    if(ballx == conex && bally == coney)
     {
       value -= 90;
-    }*/
+    }
 
     if(ballx == bally || conex == coney )
     {
@@ -67,15 +78,7 @@ class Distance {
       value += 180;
     }
 
-    while(value < 0) 
-    { 
-      value += 360.0;
-    };
-
-    while(value > 360)
-    {
-      value -= 360;
-    };
+    
 
     var dirct;
 
@@ -97,8 +100,8 @@ class Distance {
       dirct = " North, West";
     }
 
-    console.log(dirct);
-    console.log('value = ' + value);
+    // console.log(dirct);
+    // console.log('value = ' + value);
     return Math.floor(value);// + dirct;
   }
 
