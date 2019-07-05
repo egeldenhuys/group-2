@@ -173,7 +173,7 @@ export class MainComponent implements OnInit {
             this.central_service.setCities(cities, cities);
 
             //Setting the start city as visited
-            this.central_service.setVisisted(this.start);
+            // this.central_service.setVisisted(this.start);
 
             //Navigating to the live stream
             try {
