@@ -46,11 +46,29 @@ export class CentralService{
             num += 1;   //Makes sure that the cities are visited in the correct order even is a separate sensor is triggered
             for(var i = 0; i < cities.length; i++){
                 if(data == cities[i].ID){
-                    visited.push(cities[i]);
-                    cities.shift();         //removes the visited city from the array
+                    var valid = true;
+                    if(visited.length == 0){
+                        visited.push(cities[i]);
+                        cities.shift();         //removes the visited city from the array
 
-                    //Send the array of visited cities to team 4 everytime a visited city is added
-                    this.sendVisited();
+                        //Send the array of visited cities to team 4 everytime a visited city is added
+                        this.sendVisited();
+                    }
+                    else{
+                        for(var j = 0; j < visited.length; j++){
+                            if(cities[i] == visited[j]){
+                                valid = false;
+                            }
+                        }
+    
+                        if(valid == true){
+                            visited.push(cities[i]);
+                            cities.shift();         //removes the visited city from the array
+    
+                            //Send the array of visited cities to team 4 everytime a visited city is added
+                            this.sendVisited();
+                        }
+                    }
                 }
             }
         }
