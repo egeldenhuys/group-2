@@ -38,7 +38,7 @@ class PixelDetector {
                     y: pos.y,
                     id: this.identified_cones.length
                 });
-                console.log("City " + (this.identified_cones.length) + " added")
+                console.log(this.identified_cones)
 
                 if (this.identified_cones.length == this.CONE_COUNT) {
                     this.endCitySelection();
@@ -59,7 +59,7 @@ class PixelDetector {
                 var pos = getCursorPosition(canvas, e);
                 this.last_ball_pos.x = pos.x;
                 this.last_ball_pos.y = pos.y;
-                console.log(this.last_ball_pos);
+                // console.log(this.last_ball_pos);
             }
         });
     }
@@ -131,7 +131,7 @@ class PixelDetector {
 
     reportBallPosition(pos) {
         //document.getElementById('ball-pos').innerHTML = pos.x + ' , ' + pos.y;
-        console.log(pos.x + ' , ' + pos.y);
+        // console.log(pos.x + ' , ' + pos.y);
     }
 
     trackBall(event, canvas, context) {

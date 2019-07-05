@@ -8,6 +8,9 @@ import { SensorResponse } from '../models/sensor-response.model';
   providedIn: 'root'
 })
 export class SensorService {
+
+  // TODO: https://stackoverflow.com/questions/13797262/how-to-reconnect-to-websocket-after-close-connection
+  
   constructor(private http: HttpClient) {
     this.connect();
   }
@@ -27,6 +30,8 @@ export class SensorService {
   //   this.info(event.data); // What is Event? Don't worry.. It just works. Trust
   // }
 
+  // NOTE: This might not be reliable error handling
+  // Please don't judge my JS too harshly.
   connect() {
     console.log("Connecting to sensors...");
     this.ws = new WebSocket(this.url);
@@ -53,6 +58,7 @@ export class SensorService {
 
   }
 
+  // TODO: Assign wc.onmessage again after reconnect?
   pollSensors(): Observable<SensorResponse> {
     return new Observable<SensorResponse>((observer) => {
       this.ws.onmessage = (event: MessageEvent) => {

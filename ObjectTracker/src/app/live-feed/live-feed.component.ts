@@ -78,6 +78,7 @@ export class LiveFeedComponent implements OnInit {
 
       window["loc"] = locationService;
       window["senors"] = sensorService;
+      window["central"] = service;
     }
 
   loadLocations() {
@@ -215,24 +216,36 @@ export class LiveFeedComponent implements OnInit {
     this.loadLocations();
     //console.error("PixelDetector has been disabled!");
     this.pixelDetector = new PixelDetector();
-    this.pixelDetector.setConeCount(3);
+    this.pixelDetector.setConeCount(this.service.getCities().length);
+    this.service.setLocations(this.pixelDetector.identified_cones);
 
     this.pixelDetector.start();
-    this.main_logic();
-
     window["ball"] = this.ballService;
+    this.main_logic();
   }
 
-  main_logic(){
-
+  initSensors() {
     // Sub to sensors
     this.sensorService.pollSensors().subscribe(
       (res: SensorResponse) => {
         console.log('Triggered: ' + res.SensorId);
 
-        this.service.addVisited(res.SensorId);
+        let nextCity  = this.service.getNextCity();
+
+        if (nextCity) {
+          if (nextCity.ID == res.SensorId) {
+            console.log("Visited city with sensor ID: " + res.SensorId);
+            this.service.addVisited(res.SensorId);
+          } else {
+            console.log("Wrong city, ignoring");
+          }
+        }
       }
     );
+  }
+
+  main_logic(){
+    this.initSensors();
   }
 
   webcam_init() {

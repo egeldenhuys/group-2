@@ -50,7 +50,12 @@ export class CentralService{
                     cities.shift();         //removes the visited city from the array
 
                     //Send the array of visited cities to team 4 everytime a visited city is added
-                    this.sendVisited();
+                    this.sendVisited().subscribe((res) => {
+                        console.log(res);
+                    },
+                    (err) => {
+                        console.error(err);
+                    });
                 }
             }
         }
@@ -94,7 +99,7 @@ export class CentralService{
         if(cities.length != 0){
             return cities[0];
         }else{
-            return false;
+            return null;
         }
     }
 
@@ -102,7 +107,7 @@ export class CentralService{
       if(cities.length != 0){
           return locations[0];
       }else{
-          return false;
+          return null;
       }
     }
 }

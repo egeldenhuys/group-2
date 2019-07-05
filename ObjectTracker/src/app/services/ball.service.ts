@@ -14,6 +14,10 @@ export class BallService {
     console.log(`[INFO] [BallService]: ${msg}`);
   }
 
+  error(msg: string) {
+    console.error(`[ERROR] [SensorService] ${msg}`);
+  }
+
   init() {
     this.info('Init');
     this.ws = new WebSocket(this.url);
@@ -27,9 +31,20 @@ export class BallService {
       this.info('Socket Opened');
     };
 
+    this.ws.onerror = (ev) => {
+      this.error('Socket closed');
+
+      setTimeout(() => {
+        console.log("Reconnecting...");
+        this.init();
+      }, 1000);
+    }
+
     this.ws.onclose = () => {
       this.canSend = false;
       this.info('Socket Closed');
+
+      this.init(); // Connect
     };
   }
 
