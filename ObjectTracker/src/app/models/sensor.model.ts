@@ -6,13 +6,6 @@ import { Observable } from 'rxjs';
  */
 export interface Sensor {
     ID: number;
-    IP: string;
-    Port: number;
-    City: string;
-    postfix?: string;
-    Poller?: any; // observable
-    LastTrigger?: number;
-    socket?: any;
-    X_coordinate: number;
-    Y_coordinate: number;
+    Name: string,
+    Country: string,
 }

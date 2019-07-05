@@ -77,10 +77,13 @@ class PixelDetector {
 
         this.canvas = document.getElementById('canvas');
         this.context = canvas.getContext('2d');
+        this.context.lineWidth = 7;
+        this.context.strokeStyle = '#FFF';//Set Style
+
 
         //Setup Ball Identifying Color
         tracking.ColorTracker.registerColor('ball_color', function (r, g, b) {
-            return (r > 240 && g > 240 && b > 240);//true/false
+            return (r > 190 && g > 190 && b > 180);//true/false
         });
 
         //Setup Cone Identifying Color
@@ -136,7 +139,6 @@ class PixelDetector {
             if (rect.color != 'ball_color')
                 return;
 
-            context.strokeStyle = '#FF0000';//Set Style
 
             //cur_pos might not be the ball's position
             this.cur_pos.x = rect.x + rect.width / 2;

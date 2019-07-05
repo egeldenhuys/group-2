@@ -3,11 +3,14 @@
 </head>
 
 <video id="video"></video>
-<canvas id="canvas"></canvas>
+<canvas id="canvas" (click)="onCanvasClick($event)" (mousemove)="onCanvasMouseMove($event)"></canvas>
+
+<!-- <canvas id="canvas" (click)="onCanvasClick($event)" (mousemove)="onCanvasMouseMove($event)"></canvas> -->
+
 
 <!-- <canvas #small_image id="small_image"></canvas> -->
 
-<button (click) = "returnHome()" id="home_button">Home</button>
+<button (click) = "mouseTrapInit()" id="home_button">Home</button>
 
 <div #circle1 id="circles_div_1"><button id="circle1" class="cirlces"><h2 id="icon1" class="location_number">1</h2></button></div><div #p1_div id="p1_div"><p #p1 id="p1">Location</p></div><br/>
 <div #circle2 id="circles_div_2"><button id="circle2" class="cirlces"><h2 id="icon2" class="location_number">2</h2></button><div #p2_div id="p2_div"><p #p2 id="p2">Location</p></div><br/>

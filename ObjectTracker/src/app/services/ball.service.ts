@@ -4,37 +4,41 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BallService {
-  private url = 'ws://192.168.47.226:8777/';
+  constructor() {}
+
+  private url = 'ws://marvelous-north-cascades-55646.herokuapp.com:80/';
   private canSend = false;
 
   private ws: WebSocket;
-
-  onopen() {
-    this.canSend = true;
-    console.log('Socket Opened');
+  info(msg: string) {
+    console.log(`[INFO] [BallService]: ${msg}`);
   }
-
-  onclose() {
-    this.canSend = false;
-    console.log('Socket Closed');
-  }
-
-  onmessage(event) {
-    console.log('Ball: ' + event.data);
-  }
-
-  constructor() {}
 
   init() {
+    this.info('Init');
     this.ws = new WebSocket(this.url);
-    this.ws.onmessage = this.onmessage;
-    this.ws.onopen = this.onopen;
-    this.ws.onclose = this.onclose;
+
+    this.ws.onmessage = event => {
+      this.info('Ball Says: ' + event.data);
+    };
+
+    this.ws.onopen = () => {
+      this.canSend = true;
+      this.info('Socket Opened');
+    };
+
+    this.ws.onclose = () => {
+      this.canSend = false;
+      this.info('Socket Closed');
+    };
   }
 
   sendMessage(msg: string) {
     if (this.canSend) {
+      this.info('Sending: ' + msg);
       this.ws.send(msg.toUpperCase());
+    } else {
+      this.info('Unable to send message (canSend = false)');
     }
   }
 
@@ -55,7 +59,7 @@ export class BallService {
 
   roll(speed: number, angle: number) {
     console.log(`ROLL(${speed},${angle})`);
-    this.sendMessage('`ROLL,${speed},${angle}`');
+    this.sendMessage(`ROLL,${speed},${angle}`);
   }
 
   rotate(angle: number) {

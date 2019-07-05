@@ -54,8 +54,6 @@ export class CentralService{
                     this.sendVisited();
                 }
             }
-        }else{
-            num -= 1;
         }
     }
 
@@ -73,6 +71,7 @@ export class CentralService{
 
     //Send array of visited cities to team 4
     sendVisited(){
+        console.log("sendVisited");
         const postData: Visited = {Visited: visited};
 
         const options = {

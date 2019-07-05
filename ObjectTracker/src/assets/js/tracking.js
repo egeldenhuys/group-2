@@ -2102,14 +2102,14 @@
    * @default 20
    * @type {number}
    */
-  tracking.ColorTracker.prototype.minDimension = 20;
+  tracking.ColorTracker.prototype.minDimension = 5;
 
   /**
    * Holds the maximum dimension to classify a rectangle.
    * @default Infinity
    * @type {number}
    */
-  tracking.ColorTracker.prototype.maxDimension = Infinity;
+  tracking.ColorTracker.prototype.maxDimension = 50;
 
 
   /**

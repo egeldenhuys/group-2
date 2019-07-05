@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BallService } from 'src/app/services/ball.service';
 
+
 @Component({
   selector: 'app-ball-test',
   templateUrl: './ball-test.component.html',
@@ -13,6 +14,7 @@ export class BallTestComponent implements OnInit {
   ngOnInit() {
     console.log('init');
     this.ball.init();
+    window['ball'] = this.ball;
   }
 
 }
