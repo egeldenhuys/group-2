@@ -4,6 +4,9 @@ import { City, LocationAPIService } from '../services/location-api.service';
 import { CentralService } from '../services/central.service';
 import { Distance } from '../../assets/js/distance';
 import { BallService } from '../services/ball.service';
+import { SensorService } from '../services/sensor.service';
+import { SensorResponse } from '../models/sensor-response.model';
+import { Sensor } from '../models/sensor.model';
 
 declare var PixelDetector: any;
 declare var Distance: any;
@@ -70,8 +73,12 @@ export class LiveFeedComponent implements OnInit {
   @ViewChild("p9_div", { static: true }) p9_div: ElementRef;
   @ViewChild("p10_div", { static: true }) p10_div: ElementRef;
 
-  constructor(private router: Router, private service: CentralService,
-    private renderer: Renderer2, private ballService: BallService) { }
+  constructor(private router: Router, private service: CentralService, private sensorService: SensorService,
+    private renderer: Renderer2, private ballService: BallService, private locationService: LocationAPIService) {
+
+      window["loc"] = locationService;
+      window["senors"] = sensorService;
+    }
 
   loadLocations() {
     const circle_1 = this.circle1.nativeElement;
@@ -206,31 +213,26 @@ export class LiveFeedComponent implements OnInit {
 
     this.webcam_init();
     this.loadLocations();
-    console.error("PixelDetector has been disabled!");
-    //this.pixelDetector = new PixelDetector();
-    //this.pixelDetector.setConeCount(length);
+    //console.error("PixelDetector has been disabled!");
+    this.pixelDetector = new PixelDetector();
+    this.pixelDetector.setConeCount(length);
 
-    // this.service.setLocations(this.pixelDetector.identified_cones);
-
-    // var next_location = this.service.getNextLocation();
-    // var ball_position = this.pixelDetector.this.last_ball_pos;
-    // var distance = Distance.distance(ball_position.x, ball_position.y, next_location.x, next_location.y);
-
-    // PixelDetector.foo();
-    //this.pixelDetector.start();    
-    //this.main_logic();
+    this.pixelDetector.start();  
+    this.main_logic();
 
     window["ball"] = this.ballService;
   }
 
   main_logic(){
-    // while (true){
-    //   if (this.pixelDetector.STATE == "track_ball"){
-    //     //LOGIC
 
+    // Sub to sensors
+    this.sensorService.pollSensors().subscribe(
+      (res: SensorResponse) => {
+        console.log('Triggered: ' + res.SensorId);
 
-    //   }
-    // }
+        this.service.addVisited(res.SensorId);
+      }
+    );
   }
 
   webcam_init() {

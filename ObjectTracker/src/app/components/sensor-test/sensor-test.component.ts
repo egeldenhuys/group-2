@@ -16,13 +16,7 @@ export class SensorTestComponent implements OnInit {
   constructor(private sensorService: SensorService) { }
 
   ngOnInit() {
-    let sensor: Sensor = {
-      ID: 1,
-      City: 'PTA',
-    };
- 
-    this.sensorService.setSensors([sensor]);
-
+   
     this.sensorService.connect();
 
     this.sensorService.pollSensors().subscribe(

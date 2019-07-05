@@ -6,5 +6,6 @@ import { Observable } from 'rxjs';
  */
 export interface Sensor {
     ID: number;
-    City: string;
+    Name: string,
+    Country: string,
 }

@@ -41,13 +41,16 @@ export class CentralService{
     }
 
     addVisited(data: number){
+        console.log("addVisited: " + data);
         for(var i = 0; i < cities.length; i++){
             if(data == cities[i].ID){
                 visited.push(cities[i]);
                 cities.shift();         //removes the visited city from the array
 
                 //Send the array of visited cities to team 4 everytime a visited city is added
-                this.sendVisited();
+                this.sendVisited().subscribe((res) => {
+                    console.log(res);
+                });
             }
         }
     }
@@ -66,6 +69,7 @@ export class CentralService{
 
     //Send array of visited cities to team 4
     sendVisited(){
+        console.log("sendVisited");
         const postData: Visited = {Visited: visited};
 
         const options = {

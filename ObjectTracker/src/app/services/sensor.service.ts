@@ -8,10 +8,11 @@ import { SensorResponse } from '../models/sensor-response.model';
   providedIn: 'root'
 })
 export class SensorService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.connect();
+  }
 
   private url = 'ws://192.168.47.197:8080';
-  sensors: Sensor[] = [];
   private ws: WebSocket;
 
   info(msg: string) {
@@ -22,15 +23,12 @@ export class SensorService {
     console.error(`[ERROR] [SensorService] ${msg}`);
   }
 
-  setSensors(sensors: Sensor[]) {
-    this.sensors = sensors;
-  }
-
   // onmessage(event) {
   //   this.info(event.data); // What is Event? Don't worry.. It just works. Trust
   // }
 
   connect() {
+    console.log("Connecting to sensors...");
     this.ws = new WebSocket(this.url);
 
     this.ws.onopen = () => {
@@ -41,22 +39,28 @@ export class SensorService {
     this.ws.onclose = ev => {
       this.info('Socket Closed');
       this.info(ev.reason);
+      this.connect();
     };
 
     this.ws.onerror = () => {
       this.error('Socket Closed');
+
+      setTimeout(() => {
+        console.log("Reconnecting...");
+        this.connect();
+      }, 1000);
     };
 
-    // handled by pollSensors()
-    // this.ws.onmessage = (event: any) => {
-    //   this.info(event.data);
-    // };
   }
 
   pollSensors(): Observable<SensorResponse> {
-    return new Observable<SensorResponse>(observer => {
-      this.ws.onmessage = event => {
-        observer.next(event.data as SensorResponse);
+    return new Observable<SensorResponse>((observer) => {
+      this.ws.onmessage = (event: MessageEvent) => {
+        // console.log("RAW:" + event.data);
+        let obj = JSON.parse(event.data);
+        // console.log(obj);
+        // console.log(event.data as SensorResponse);
+        observer.next(obj as SensorResponse);
       };
     });
   }
