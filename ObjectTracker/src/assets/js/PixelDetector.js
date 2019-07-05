@@ -4,14 +4,14 @@ class PixelDetector {
         console.log("New pixel detector constructed...");
 
         this.CONE_COUNT = 3; //aka City Count
-        this.STATE = "track_cones"; //track_cones or track_ball
+        this.STATE = "track_ball"; //track_cones or track_ball
         //e.g = [  rect , rect , rect , rect ]
         this.identified_cones = []//The final array of cones
 
         //ONLY VALIDATED BALL POSITION
         this.last_ball_pos = { x: 0, y: 0 }
 
-        this.BALL_DIST_THRESHOLD = 50;
+        this.BALL_DIST_THRESHOLD = 100;
         this.canvas = null;
         this.context = null;
 
@@ -78,12 +78,12 @@ class PixelDetector {
         this.canvas = document.getElementById('canvas');
         this.context = canvas.getContext('2d');
         this.context.lineWidth = 7;
-        this.context.strokeStyle = '#FFF';//Set Style
+        this.context.strokeStyle = '#FF0000';//Set Style
 
 
         //Setup Ball Identifying Color
         tracking.ColorTracker.registerColor('ball_color', function (r, g, b) {
-            return (r > 190 && g > 190 && b > 180);//true/false
+            return (r > 200 && g > 200 && b > 180);//true/false
         });
 
         //Setup Cone Identifying Color

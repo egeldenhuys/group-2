@@ -9,10 +9,9 @@ import { SensorResponse } from '../models/sensor-response.model';
 })
 export class SensorService {
 
-  // TODO: https://stackoverflow.com/questions/13797262/how-to-reconnect-to-websocket-after-close-connection
-  
+
   constructor(private http: HttpClient) {
-    this.connect();
+    this.socketCloseListener(null);
   }
 
   private url = 'ws://192.168.47.197:8080';
@@ -26,35 +25,57 @@ export class SensorService {
     console.error(`[ERROR] [SensorService] ${msg}`);
   }
 
+  // Source: https://stackoverflow.com/questions/13797262/how-to-reconnect-to-websocket-after-close-connection
+  // I wrote it myself first but the observable returned still had the old
+  // websocket reference
+
+  socketMessageListener = (event) => {
+    this.info('Sensor say: ' + event.data);
+  };
+
+  socketOpenListener = (event) => {
+    this.info('Connected');
+    this.ws.send('c');
+  };
+
+  socketCloseListener = (event) => {
+    if (this.ws) {
+      this.error('Disconnected.');
+    }
+    this.ws = new WebSocket(this.url);
+    this.ws.addEventListener('open', this.socketOpenListener);
+    // this.ws.addEventListener('message', this.socketMessageListener);
+    this.ws.addEventListener('close', this.socketCloseListener);
+  };
+
   // onmessage(event) {
   //   this.info(event.data); // What is Event? Don't worry.. It just works. Trust
   // }
 
   // NOTE: This might not be reliable error handling
-  // Please don't judge my JS too harshly.
   connect() {
-    console.log("Connecting to sensors...");
-    this.ws = new WebSocket(this.url);
+    // console.log("Connecting to sensors...");
+    // this.ws = new WebSocket(this.url);
 
-    this.ws.onopen = () => {
-      this.info('Socket opened');
-      this.ws.send("c");
-    };
+    // this.ws.onopen = () => {
+    //   this.info('Socket opened');
+    //   this.ws.send("c");
+    // };
 
-    this.ws.onclose = ev => {
-      this.info('Socket Closed');
-      this.info(ev.reason);
-      this.connect();
-    };
+    // this.ws.onclose = ev => {
+    //   this.info('Socket Closed');
+    //   this.info(ev.reason);
+    //   this.connect();
+    // };
 
-    this.ws.onerror = () => {
-      this.error('Socket Closed');
+    // this.ws.onerror = () => {
+    //   this.error('Socket Closed');
 
-      setTimeout(() => {
-        console.log("Reconnecting...");
-        this.connect();
-      }, 1000);
-    };
+    //   setTimeout(() => {
+    //     console.log("Reconnecting...");
+    //     this.connect();
+    //   }, 1000);
+    // };
 
   }
 

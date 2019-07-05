@@ -216,8 +216,8 @@ export class LiveFeedComponent implements OnInit {
     this.loadLocations();
     //console.error("PixelDetector has been disabled!");
     this.pixelDetector = new PixelDetector();
-    this.pixelDetector.setConeCount(this.service.getCities().length);
-    this.service.setLocations(this.pixelDetector.identified_cones);
+    //this.pixelDetector.setConeCount(this.service.getCities().length);
+    //this.service.setLocations(this.pixelDetector.identified_cones);
 
     this.pixelDetector.start();
     window["ball"] = this.ballService;
@@ -231,6 +231,7 @@ export class LiveFeedComponent implements OnInit {
         console.log('Triggered: ' + res.SensorId);
 
         let nextCity  = this.service.getNextCity();
+        console.log(nextCity);
 
         if (nextCity) {
           if (nextCity.ID == res.SensorId) {
@@ -246,6 +247,7 @@ export class LiveFeedComponent implements OnInit {
 
   main_logic(){
     this.initSensors();
+    window['init'] = this.initSensors;
   }
 
   webcam_init() {
