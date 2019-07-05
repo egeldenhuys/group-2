@@ -10,6 +10,7 @@ var cities: City[] = [];        //Array of cities in the order in which they nee
 var all_cities: City[] = [];
 var sensors: Sensor[] = [];     //Array of sensors in the order in which they need to be visited
 var locations = [];
+var num: number = 0;
 
 //Defines an object to be able to send the visited array as a json
 export interface Visited{
@@ -41,14 +42,20 @@ export class CentralService{
     }
 
     addVisited(data: number){
-        for(var i = 0; i < cities.length; i++){
-            if(data == cities[i].ID){
-                visited.push(cities[i]);
-                cities.shift();         //removes the visited city from the array
+        num += 1;
 
-                //Send the array of visited cities to team 4 everytime a visited city is added
-                this.sendVisited();
+        if(num == data){
+            for(var i = 0; i < cities.length; i++){
+                if(data == cities[i].ID){
+                    visited.push(cities[i]);
+                    cities.shift();         //removes the visited city from the array
+
+                    //Send the array of visited cities to team 4 everytime a visited city is added
+                    this.sendVisited();
+                }
             }
+        }else{
+            num -= 1;
         }
     }
 
