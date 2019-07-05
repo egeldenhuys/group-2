@@ -40,12 +40,16 @@ export class CentralService{
         visited.push(data);     //add the visited city to the array
     }
 
-    addVisited(data: City){
-        visited.push(data);
-        cities.shift();         //removes the visited city from the array
+    addVisited(data: number){
+        for(var i = 0; i < cities.length; i++){
+            if(data == cities[i].ID){
+                visited.push(cities[i]);
+                cities.shift();         //removes the visited city from the array
 
-        //Send the array of visited cities to team 4 everytime a visited city is added
-        this.sendVisited();
+                //Send the array of visited cities to team 4 everytime a visited city is added
+                this.sendVisited();
+            }
+        }
     }
 
     setLocations(locations: []){
