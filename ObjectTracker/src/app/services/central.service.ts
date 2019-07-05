@@ -43,7 +43,7 @@ export class CentralService{
 
     addVisited(data: number){
         if(num == data){
-            num += 1;
+            num += 1;   //Makes sure that the cities are visited in the correct order even is a separate sensor is triggered
             for(var i = 0; i < cities.length; i++){
                 if(data == cities[i].ID){
                     visited.push(cities[i]);
